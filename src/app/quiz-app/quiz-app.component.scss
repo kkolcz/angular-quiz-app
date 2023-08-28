@@ -1,0 +1,33 @@
+.quizContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: aquamarine;
+  width: 60vw;
+  min-width: 500px;
+  height: 500px;
+}
+
+.questionNr {
+  align-self: flex-start;
+}
+
+.answer {
+  width: 70%;
+  height: 30px;
+  background-color: #f0f0f0;
+  margin: 5px;
+  padding: 5px;
+}
+
+.answer:hover {
+  background-color: #d5d5d5;
+  cursor: pointer;
+}
+
+.controlls .btn {
+  width: 125px;
+  height: 30px;
+  margin: 10px;
+}
