@@ -7,8 +7,21 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./quiz-app.component.scss'],
 })
 export class QuizAppComponent implements OnInit {
-  questionsList: any = [{}];
+  questionsList: any = [
+    {
+      questionId: -1,
+      question: '',
+      options: [
+        { answer: '', isCorrect: false },
+        { answer: '', isCorrect: false },
+        { answer: '', isCorrect: false },
+        { answer: '', isCorrect: false },
+      ],
+    },
+  ];
   questionNumber: number = 1;
+  selectedAnswer: number = -1;
+  points: number = 0;
 
   constructor(private http: HttpClient) {}
 
@@ -33,5 +46,18 @@ export class QuizAppComponent implements OnInit {
     if (this.questionNumber > 1) {
       this.questionNumber--;
     }
+  }
+
+  selectAnswer(answer: any) {
+    this.selectedAnswer = answer;
+    const answerIs =
+      this.questionsList[this.questionNumber - 1].options[answer].isCorrect;
+
+    console.log(answerIs);
+    if (answerIs) {
+      this.points++;
+    }
+
+    this.nextQuestion();
   }
 }
