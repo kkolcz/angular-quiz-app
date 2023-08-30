@@ -1,8 +1,9 @@
 <header></header>
 <main>
   <div class="quizContainer">
-    <app-start-app></app-start-app>
-    <!-- <app-quiz-app></app-quiz-app> -->
+    <app-start-app *ngIf="!quizStarted" (quizStartEvent)="startQuiz($event)"></app-start-app>
+    <app-quiz-app *ngIf="quizStarted && !quizEnd" (quizSubmitEvent)="submitQuiz($event)"></app-quiz-app>
+    <app-submit-quiz-app *ngIf="quizEnd" [points]="points"></app-submit-quiz-app>
   </div>
 </main>
 <footer></footer>

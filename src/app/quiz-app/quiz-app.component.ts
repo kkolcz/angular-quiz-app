@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -7,6 +7,8 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./quiz-app.component.scss'],
 })
 export class QuizAppComponent implements OnInit {
+  @Output() quizSubmitEvent = new EventEmitter<number>();
+
   questionsList: any = [
     {
       questionId: -1,
@@ -42,6 +44,8 @@ export class QuizAppComponent implements OnInit {
   nextQuestion() {
     if (this.questionNumber < this.questionsList.length) {
       this.questionNumber++;
+    } else {
+      this.submitQuiz();
     }
   }
 
@@ -62,5 +66,9 @@ export class QuizAppComponent implements OnInit {
     }
 
     this.nextQuestion();
+  }
+
+  submitQuiz() {
+    this.quizSubmitEvent.emit(this.points);
   }
 }
