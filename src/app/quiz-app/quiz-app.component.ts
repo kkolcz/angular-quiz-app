@@ -30,7 +30,10 @@ export class QuizAppComponent implements OnInit {
   }
 
   loadQuestions() {
-    this.http.get('http://localhost:3000/questions').subscribe((res) => {
+    // const apiUrl = 'http://localhost:3000/questions'
+    const apiUrl =
+      'https://quiz-angular-55f08-default-rtdb.firebaseio.com/questions.json';
+    this.http.get(apiUrl).subscribe((res) => {
       this.questionsList = res;
       console.log(this.questionsList);
     });
