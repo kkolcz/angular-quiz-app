@@ -9,4 +9,5 @@ export class SubmitQuizAppComponent {
   // points: number = 0;
 
   @Input() points: number = 0;
+  @Input() userName: string = 'unknown';
 }

@@ -9,10 +9,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class StartAppComponent {
   @Output() quizStartEvent = new EventEmitter<boolean>();
+  @Output() setUserNameEvent = new EventEmitter<string>();
+
   name = new FormControl('');
 
   setQuizStart() {
-    console.log(this.name.value);
+    this.setUserNameEvent.emit(<string>this.name.value);
     this.quizStartEvent.emit(true);
   }
 }

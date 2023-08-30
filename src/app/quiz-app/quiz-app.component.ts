@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class QuizAppComponent implements OnInit {
   @Output() quizSubmitEvent = new EventEmitter<number>();
+  @Input() userName: string = 'unknown';
 
   questionsList: any = [
     {
@@ -69,6 +70,20 @@ export class QuizAppComponent implements OnInit {
   }
 
   submitQuiz() {
+    console.warn(this.userName);
     this.quizSubmitEvent.emit(this.points);
+    this.sendResult({ userName: this.userName, points: this.points });
+  }
+
+  sendResult(data: any) {
+    console.warn(data);
+    this.http
+      .post(
+        'https://quiz-angular-55f08-default-rtdb.firebaseio.com/results.json',
+        data
+      )
+      .subscribe((res) => {
+        console.log(res);
+      });
   }
 }

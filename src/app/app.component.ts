@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular-quiz-app';
+  userName: string = 'unknown';
+
   quizStarted = false;
   quizEnd = false;
   points: number = 0;
@@ -18,5 +20,9 @@ export class AppComponent {
   submitQuiz(points: number) {
     this.points = points;
     this.quizEnd = true;
+  }
+
+  setUserName(userName: string) {
+    this.userName = userName;
   }
 }
