@@ -7,6 +7,7 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class SubmitQuizAppComponent {
   // points: number = 0;
+  notification: string = '';
 
   @Input() points: number = 0;
   @Input() userName: string = 'unknown';

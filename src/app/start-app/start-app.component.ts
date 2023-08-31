@@ -13,8 +13,19 @@ export class StartAppComponent {
 
   name = new FormControl('');
 
+  error: string = '';
+
   setQuizStart() {
+    console.warn(this.name.value);
+    if (this.name.value === '') {
+      this.error = 'Nie wprowadzono nazwy użytkownika!';
+      return;
+    }
     this.setUserNameEvent.emit(<string>this.name.value);
     this.quizStartEvent.emit(true);
+  }
+
+  selectCategory(event: any) {
+    console.log(event.target.id);
   }
 }

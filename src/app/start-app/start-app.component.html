@@ -1,7 +1,23 @@
-<h2>Witaj w Quizie</h2>
-<p>Quiz zawiera pytania z dziedziny QYZ</p>
+<div class="app">
+    <h2>Witaj w Quizie</h2>
+    <p>Quiz zawiera pytania z dziedziny QYZ</p>
+    <div class="categories">
+        <div class="one" id="one" (click)="selectCategory($event)">Kategoria 1</div>
+        <div class="two" id="one">Kategoria 2</div>
+        <div class="three" id="one">Kategoria 3</div>
+        <div class="four" id="one">Kategoria 4</div>
+        <div class="five" id="one">Kategoria 5</div>
+        <div class="six" id="one">Kategoria 6</div>
+    </div>
 
-<input id="name" type="text" placeholder="Twoja nazwa" [formControl]="name">
-<button (click)="setQuizStart()">Start</button>
+    <div class="userName">
+        <p>Podaj swoją nazwę użytkownika!</p>
+        <div class="controlsButtons">
+            <input id="name" type="text" placeholder="Twoja nazwa" [formControl]="name">
+            <button (click)="setQuizStart()" (keydown.enter)="setQuizStart()">Start</button>
+        </div>
+    </div>
+    <p class="error">{{error}}</p>
 
-<p>Nie zamykaj okna póki nie zakończy się quiz!</p>
+    <p>Nie zamykaj okna póki nie zakończy się quiz!</p>
+</div>

@@ -1,0 +1,57 @@
+.error {
+  color: red;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // text-align: center;
+}
+
+.categories {
+  margin: 25px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 25px;
+}
+
+.categories div {
+  cursor: pointer;
+  text-align: center;
+  width: 125px;
+  padding: 10px;
+  transition: all 0.3s;
+}
+
+.categories div:hover {
+  background-color: beige;
+}
+
+.one {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.two {
+  grid-column: 3;
+  grid-row: 1;
+}
+
+.controlsButtons {
+  border: 1px solid black;
+  width: 230px;
+}
+
+input {
+  width: 150px;
+  height: 30px;
+  border: none;
+  outline: none;
+}
+
+button {
+  width: 75px;
+  height: 30px;
+  border: none;
+}
