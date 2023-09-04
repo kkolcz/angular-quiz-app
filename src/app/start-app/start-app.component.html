@@ -18,8 +18,9 @@
     <div class="userName">
         <p>Podaj swoją nazwę użytkownika!</p>
         <div class="controlsButtons">
-            <input id="name" type="text" placeholder="Twoja nazwa" [formControl]="name">
-            <button (click)="setQuizStart()" (keydown.enter)="setQuizStart()">Start</button>
+            <input id="name" type="text" placeholder="Twoja nazwa" [formControl]="name"
+                (keydown.enter)="setQuizStart()">
+            <button (click)="setQuizStart()">Start</button>
         </div>
     </div>
     <p class="error">{{error}}</p>
