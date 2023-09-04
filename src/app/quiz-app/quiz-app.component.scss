@@ -17,6 +17,11 @@
   align-self: flex-start;
 }
 
+.question {
+  margin-top: 50px;
+  font-weight: 600;
+}
+
 .answer {
   width: 500px;
   height: 30px;
@@ -33,6 +38,10 @@
   cursor: pointer;
   box-shadow: 8px 8px 15px -5px rgba(66, 68, 90, 1);
   transition: all 0.3s;
+}
+
+.summary {
+  margin-top: 40px;
 }
 
 .controlls .btn {

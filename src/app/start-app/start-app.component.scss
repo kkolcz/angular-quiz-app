@@ -9,6 +9,10 @@
   // text-align: center;
 }
 
+.section_categories {
+  margin-top: 50px;
+}
+
 .categories {
   margin: 25px;
   display: grid;
@@ -37,6 +41,10 @@
 .two {
   grid-column: 3;
   grid-row: 1;
+}
+
+.userName {
+  margin-top: 50px;
 }
 
 .controlsButtons {

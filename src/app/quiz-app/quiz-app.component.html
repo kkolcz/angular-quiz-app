@@ -1,15 +1,19 @@
 <div class="quizContainer">
     <h2>Quiz</h2>
-    <h2>{{category}}</h2>
+    <!-- <h2>{{category}}</h2> -->
     <p class="question">{{questionNumber}}. {{questionsList[questionNumber-1].question}}</p>
-    <div class="answer" (click)="selectAnswer(0)">{{questionsList[questionNumber-1].options[0].answer}}</div>
-    <div class="answer" (click)="selectAnswer(1)">{{questionsList[questionNumber-1].options[1].answer}}</div>
-    <div class="answer" (click)="selectAnswer(2)">{{questionsList[questionNumber-1].options[2].answer}}</div>
-    <div class="answer" (click)="selectAnswer(3)">{{questionsList[questionNumber-1].options[3].answer}}</div>
+    <div class="answers">
+        <div class="answer" (click)="selectAnswer(0)">{{questionsList[questionNumber-1].options[0].answer}}</div>
+        <div class="answer" (click)="selectAnswer(1)">{{questionsList[questionNumber-1].options[1].answer}}</div>
+        <div class="answer" (click)="selectAnswer(2)">{{questionsList[questionNumber-1].options[2].answer}}</div>
+        <div class="answer" (click)="selectAnswer(3)">{{questionsList[questionNumber-1].options[3].answer}}</div>
+    </div>
     <!-- <div class="controlls"> -->
     <!-- <button class="btn btn-prev" (click)="prevQuestion()">Poprzednie</button> -->
     <!-- <button class="btn btn-next" (click)="nextQuestion()">Dalej</button> -->
     <!-- </div> -->
-    <p class="questionNr">Pytanie {{questionNumber}} z {{questionsList.length}}</p>
-    <p class="points">Punkty: {{points}}</p>
+    <div class="summary">
+        <p class="questionNr">Pytanie {{questionNumber}} z {{questionsList.length}}</p>
+        <p class="points">Punkty: {{points}}</p>
+    </div>
 </div>
