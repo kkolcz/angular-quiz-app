@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 export class QuizAppComponent implements OnInit {
   @Output() quizSubmitEvent = new EventEmitter<number>();
   @Input() userName: string = 'unknown';
+  @Input() category: string = '';
 
   questionsList: any = [
     {
@@ -34,8 +35,7 @@ export class QuizAppComponent implements OnInit {
 
   loadQuestions() {
     // const apiUrl = 'http://localhost:3000/questions'
-    const apiUrl =
-      'https://quiz-angular-55f08-default-rtdb.firebaseio.com/questions.json';
+    const apiUrl = `https://quiz-angular-55f08-default-rtdb.firebaseio.com/questions/${this.category}.json`;
     this.http.get(apiUrl).subscribe((res) => {
       this.questionsList = res;
       console.log(this.questionsList);

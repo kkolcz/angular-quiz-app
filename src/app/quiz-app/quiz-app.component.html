@@ -1,5 +1,6 @@
 <div class="quizContainer">
     <h2>Quiz</h2>
+    <h2>{{category}}</h2>
     <p class="question">{{questionNumber}}. {{questionsList[questionNumber-1].question}}</p>
     <div class="answer" (click)="selectAnswer(0)">{{questionsList[questionNumber-1].options[0].answer}}</div>
     <div class="answer" (click)="selectAnswer(1)">{{questionsList[questionNumber-1].options[1].answer}}</div>

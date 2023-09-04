@@ -1,14 +1,19 @@
 <div class="app">
     <h2>Witaj w Quizie</h2>
-    <p>Quiz zawiera pytania z dziedziny QYZ</p>
+
+    <h4>Wybierz kategorię pytań</h4>
     <div class="categories">
-        <div class="one" id="one" (click)="selectCategory($event)">Kategoria 1</div>
-        <div class="two" id="one">Kategoria 2</div>
-        <div class="three" id="one">Kategoria 3</div>
-        <div class="four" id="one">Kategoria 4</div>
-        <div class="five" id="one">Kategoria 5</div>
-        <div class="six" id="one">Kategoria 6</div>
+        <div class="one" id="one" (click)="selectCategory($event)">Zwierzęta</div>
+        <div class="two" id="two" (click)="selectCategory($event)">Biologia</div>
+        <div class="three" id="three" (click)="selectCategory($event)">Chemia</div>
+        <div class="four" id="four" (click)="selectCategory($event)">Informatyka</div>
+        <div class="five" id="five" (click)="selectCategory($event)">Język Polski</div>
+        <div class="six" id="six" (click)="selectCategory($event)">Języki</div>
     </div>
+
+
+
+    <p *ngIf="category">Wybrano Quiz z kategorii: <b>{{category}}</b></p>
 
     <div class="userName">
         <p>Podaj swoją nazwę użytkownika!</p>
