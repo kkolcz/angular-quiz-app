@@ -72,7 +72,11 @@ export class QuizAppComponent implements OnInit {
   submitQuiz() {
     console.warn(this.userName);
     this.quizSubmitEvent.emit(this.points);
-    this.sendResult({ userName: this.userName, points: this.points });
+    this.sendResult({
+      userName: this.userName,
+      points: this.points,
+      category: this.category,
+    });
   }
 
   sendResult(data: any) {
