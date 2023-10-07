@@ -1,6 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { QuizService } from '../services/quiz.service';
+import { Questions } from '../models/questions';
+import { Results } from '../models/results';
 
 @Component({
   selector: 'app-quiz-app',
@@ -13,9 +16,9 @@ export class QuizAppComponent implements OnInit {
   @Input() category: string = '';
 
   error: boolean = false;
-  loading: boolean = false;
+  isLoading: boolean = false;
 
-  questionsList: any = [
+  questionsList: Questions[] = [
     {
       questionId: -1,
       question: '',
@@ -31,7 +34,7 @@ export class QuizAppComponent implements OnInit {
   selectedAnswer: number = -1;
   points: number = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
     this.loadQuestions();
@@ -39,22 +42,16 @@ export class QuizAppComponent implements OnInit {
 
   loadQuestions() {
     // const apiUrl = 'http://localhost:3000/questions'
-    const apiUrl = `https://quiz-angular-55f08-default-rtdb.firebaseio.com/questions/${this.category}.json`;
+    // this.loading = true;
 
-    this.loading = true;
-    this.http.get(apiUrl).subscribe(
-      (res) => {
-        this.questionsList = res;
-        this.loading = false;
-        // console.log(this.questionsList);
-      },
-      (err) => {
-        console.error(err);
-        this.error = true;
-        // this.error = `${err.status} ${err.statusText}`;
-        // alert(`${err.status} ${err.statusText}`);
-      }
-    );
+    this.isLoading = true;
+    this.quizService.load(this.category).subscribe((res) => {
+      this.questionsList = res as Questions[];
+      console.log(res);
+      this.isLoading = false;
+    });
+    // this.loading = false;
+    // console.log(this.questionsList);
   }
 
   nextQuestion() {
@@ -94,15 +91,14 @@ export class QuizAppComponent implements OnInit {
     });
   }
 
-  sendResult(data: any) {
-    console.warn(data);
-    this.http
-      .post(
-        'https://quiz-angular-55f08-default-rtdb.firebaseio.com/results.json',
-        data
-      )
-      .subscribe((res) => {
-        console.log(res);
-      });
+  sendResult(data: Results) {
+    this.quizService.sendResultDb(data).subscribe(
+      (res) => {
+        console.log('Successfully sent data', res, data);
+      },
+      (err) => {
+        console.error('Error', err);
+      }
+    );
   }
 }
