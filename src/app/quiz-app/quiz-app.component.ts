@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-quiz-app',
@@ -10,6 +11,9 @@ export class QuizAppComponent implements OnInit {
   @Output() quizSubmitEvent = new EventEmitter<number>();
   @Input() userName: string = 'unknown';
   @Input() category: string = '';
+
+  error: boolean = false;
+  loading: boolean = false;
 
   questionsList: any = [
     {
@@ -36,10 +40,21 @@ export class QuizAppComponent implements OnInit {
   loadQuestions() {
     // const apiUrl = 'http://localhost:3000/questions'
     const apiUrl = `https://quiz-angular-55f08-default-rtdb.firebaseio.com/questions/${this.category}.json`;
-    this.http.get(apiUrl).subscribe((res) => {
-      this.questionsList = res;
-      console.log(this.questionsList);
-    });
+
+    this.loading = true;
+    this.http.get(apiUrl).subscribe(
+      (res) => {
+        this.questionsList = res;
+        this.loading = false;
+        // console.log(this.questionsList);
+      },
+      (err) => {
+        console.error(err);
+        this.error = true;
+        // this.error = `${err.status} ${err.statusText}`;
+        // alert(`${err.status} ${err.statusText}`);
+      }
+    );
   }
 
   nextQuestion() {

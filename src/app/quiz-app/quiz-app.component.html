@@ -1,4 +1,4 @@
-<div class="quizContainer">
+<div class="quizContainer" *ngIf="!error && loading === false">
     <h2>Quiz</h2>
     <!-- <h2>{{category}}</h2> -->
     <p class="question">{{questionNumber}}. {{questionsList[questionNumber-1].question}}</p>
@@ -16,4 +16,12 @@
         <p class="questionNr">Pytanie {{questionNumber}} z {{questionsList.length}}</p>
         <p class="points">Punkty: {{points}}</p>
     </div>
+</div>
+
+<div *ngIf="loading">
+    <h2>Loading..</h2>
+</div>
+
+<div *ngIf="error">
+    <h2>Coś poszło nie tak, spróbuj ponownie.</h2>
 </div>
