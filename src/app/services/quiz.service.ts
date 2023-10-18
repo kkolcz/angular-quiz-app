@@ -9,7 +9,7 @@ export class QuizService {
 
   load(category: string) {
     const apiUrl = `https://quiz-angular-55f08-default-rtdb.firebaseio.com/questions/${category}.json`;
-    
+
     return this.http.get(apiUrl);
   }
 
@@ -18,5 +18,22 @@ export class QuizService {
       'https://quiz-angular-55f08-default-rtdb.firebaseio.com/results.json',
       data
     );
+  }
+
+  getResultsDb() {
+    return this.http.get(
+      'https://quiz-angular-55f08-default-rtdb.firebaseio.com/results.json'
+    );
+  }
+
+  getResultsArray() {
+    let results: any = [];
+    this.getResultsDb().subscribe((res) => {
+      for (const [index, value] of Object.entries(res)) {
+        results.push(value);
+      }
+    });
+
+    return results;
   }
 }

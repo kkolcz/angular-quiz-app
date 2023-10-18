@@ -25,3 +25,7 @@
 <div *ngIf="error">
     <h2>Coś poszło nie tak, spróbuj ponownie.</h2>
 </div>
+
+<div *ngIf="results">
+    <p *ngFor="let result of results">{{result.points}} {{result.userName}}</p>
+</div>

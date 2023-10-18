@@ -33,11 +33,25 @@ export class QuizAppComponent implements OnInit {
   questionNumber: number = 1;
   selectedAnswer: number = -1;
   points: number = 0;
+  results: any = null;
 
   constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
     this.loadQuestions();
+
+    // this.quizService.getResultsDb().subscribe((res) => {
+    //   let results = [];
+    //   console.log(res);
+    //   for (const [index, value] of Object.entries(res)) {
+    //     results.push(value);
+    //   }
+    //   // console.log(results);
+    //   return results;
+    // });
+
+    this.results = this.quizService.getResultsArray();
+    console.log(this.results);
   }
 
   loadQuestions() {
