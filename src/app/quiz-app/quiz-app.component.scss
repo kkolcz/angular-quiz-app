@@ -11,6 +11,11 @@
   // width: 60vw;
   // min-width: 500px;
   height: 500px;
+  width: 500px;
+}
+
+.questionContainer {
+  height: 200px;
 }
 
 .questionNr {
@@ -20,6 +25,7 @@
 .question {
   margin-top: 50px;
   font-weight: 600;
+
 }
 
 .answer {
