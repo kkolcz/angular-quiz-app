@@ -14,6 +14,12 @@ export class AppComponent {
   quizEnd = false;
   points: number = 0;
 
+  showWelcome: boolean = true;
+
+  closeWelcome() {
+    this.showWelcome = false;
+  }
+
   startQuiz(val: boolean) {
     this.quizStarted = val;
   }

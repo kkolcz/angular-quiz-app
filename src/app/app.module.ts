@@ -7,9 +7,10 @@ import { QuizAppComponent } from './quiz-app/quiz-app.component';
 import { StartAppComponent } from './start-app/start-app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SubmitQuizAppComponent } from './submit-quiz-app/submit-quiz-app.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
-  declarations: [AppComponent, QuizAppComponent, StartAppComponent, SubmitQuizAppComponent],
+  declarations: [AppComponent, QuizAppComponent, StartAppComponent, SubmitQuizAppComponent, WelcomeComponent],
   imports: [BrowserModule, HttpClientModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,8 +1,9 @@
 <header></header>
 <main>
   <div class="quizContainer">
-    <app-start-app *ngIf="!quizStarted" (quizStartEvent)="startQuiz($event)" (setUserNameEvent)="setUserName($event)"
-      (setCategoryEvent)="setCategory($event)"></app-start-app>
+    <app-welcome *ngIf="showWelcome" (closeWelcomeEvent)="closeWelcome()" />
+    <app-start-app *ngIf="!quizStarted && !showWelcome" (quizStartEvent)="startQuiz($event)"
+      (setUserNameEvent)="setUserName($event)" (setCategoryEvent)="setCategory($event)"></app-start-app>
     <app-quiz-app *ngIf="quizStarted && !quizEnd" [userName]="userName" [category]="category"
       (quizSubmitEvent)="submitQuiz($event)"></app-quiz-app>
     <app-submit-quiz-app *ngIf="quizEnd" [points]="points" (restartQuizEvent)="restartQuiz()"
