@@ -5,25 +5,21 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class QuizService {
+  API_KEY = 'https://quiz-angular-55f08-default-rtdb.firebaseio.com';
   constructor(private http: HttpClient) {}
 
   load(category: string) {
-    const apiUrl = `https://quiz-angular-55f08-default-rtdb.firebaseio.com/questions/${category}.json`;
+    const apiUrl = `${this.API_KEY}/questions/${category}.json`;
 
     return this.http.get(apiUrl);
   }
 
   sendResultDb(data: any) {
-    return this.http.post(
-      'https://quiz-angular-55f08-default-rtdb.firebaseio.com/results.json',
-      data
-    );
+    return this.http.post(`${this.API_KEY}/results.json`, data);
   }
 
   getResultsDb() {
-    return this.http.get(
-      'https://quiz-angular-55f08-default-rtdb.firebaseio.com/results.json'
-    );
+    return this.http.get(`${this.API_KEY}/results.json`);
   }
 
   getResultsArray() {
