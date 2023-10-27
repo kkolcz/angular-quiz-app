@@ -34,11 +34,21 @@ export class QuizAppComponent implements OnInit {
   selectedAnswer: number = -1;
   points: number = 0;
   results: any = null;
+  timeForQuestion = 1;
+  time: number = 60;
 
   constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
     this.loadQuestions();
+
+    const interval = setInterval(() => {
+      this.time--;
+      if (this.time <= 0) {
+        clearInterval(interval);
+        this.submitQuiz();
+      }
+    }, 1000);
 
     // this.quizService.getResultsDb().subscribe((res) => {
     //   let results = [];
@@ -61,6 +71,7 @@ export class QuizAppComponent implements OnInit {
     this.isLoading = true;
     this.quizService.load(this.category).subscribe((res) => {
       this.questionsList = res as Questions[];
+      this.time = this.questionsList.length * this.timeForQuestion;
       console.log(res);
       this.isLoading = false;
     });
@@ -72,7 +83,8 @@ export class QuizAppComponent implements OnInit {
     if (this.questionNumber < this.questionsList.length) {
       this.questionNumber++;
     } else {
-      this.submitQuiz();
+      // this.submitQuiz();
+      this.time = 0;
     }
   }
 
@@ -96,6 +108,7 @@ export class QuizAppComponent implements OnInit {
   }
 
   submitQuiz() {
+    console.log(this.questionNumber);
     console.warn(this.userName);
     this.quizSubmitEvent.emit(this.points);
     this.sendResult({

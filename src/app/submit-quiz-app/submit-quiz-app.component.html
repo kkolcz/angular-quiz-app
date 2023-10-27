@@ -1,6 +1,7 @@
-<div>
+<div class="submitContainer">
     <h2>Gratulacje!</h2>
-    <p><b>{{userName}}</b>, udało Ci się ukończyć quiz!</p>
+    <p><b>{{userName}}</b>, ukończyłeś quiz!</p>
     <p>Wynik który uzyskałeś to: <b>{{points}}</b> punkty!</p>
     <p class="notification">{{notification}}</p>
+    <button (click)="restartQuiz()">Restart</button>
 </div>

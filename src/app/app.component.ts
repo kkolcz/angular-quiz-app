@@ -30,4 +30,11 @@ export class AppComponent {
   setCategory(category: string) {
     this.category = category;
   }
+
+  restartQuiz() {
+    this.quizStarted = false;
+    this.quizEnd = false;
+    this.points = 0;
+    // console.log('restarttttt');
+  }
 }

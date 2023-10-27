@@ -2,3 +2,16 @@ h2 {
   margin-bottom: 100px;
   text-align: center;
 }
+
+.submitContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  width: 125px;
+  align-self: center;
+  padding: 12px;
+  transition: all 0.3s;
+  border: 2px solid rgba(0, 0, 0, 0.6);
+}
