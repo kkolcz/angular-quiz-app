@@ -25,13 +25,12 @@
 .question {
   margin-top: 50px;
   font-weight: 600;
-
 }
 
 .answer {
   width: 500px;
   height: 30px;
-  background-color: #f0f0f0;
+  // background-color: #f0f0f0;
   border: 1px solid black;
   border-radius: 6px;
   margin: 5px;
@@ -40,7 +39,8 @@
 }
 
 .answer:hover {
-  background-color: #d5d5d5;
+  background-color: rgba(44, 62, 80, 0.4);
+  scale: 1.02;
   cursor: pointer;
   box-shadow: 8px 8px 15px -5px rgba(66, 68, 90, 1);
   transition: all 0.3s;
