@@ -17,6 +17,7 @@ export class QuizAppComponent implements OnInit {
 
   error: boolean = false;
   isLoading: boolean = false;
+  quizIsEnded: boolean = false;
 
   questionsList: Questions[] = [
     {
@@ -83,8 +84,8 @@ export class QuizAppComponent implements OnInit {
     if (this.questionNumber < this.questionsList.length) {
       this.questionNumber++;
     } else {
-      // this.submitQuiz();
-      this.time = 0;
+      this.submitQuiz();
+      // this.time = 0;
     }
   }
 
@@ -108,14 +109,17 @@ export class QuizAppComponent implements OnInit {
   }
 
   submitQuiz() {
-    console.log(this.questionNumber);
-    console.warn(this.userName);
-    this.quizSubmitEvent.emit(this.points);
-    this.sendResult({
-      userName: this.userName,
-      points: this.points,
-      category: this.category,
-    });
+    if (this.quizIsEnded === false) {
+      console.log(this.questionNumber);
+      console.warn(this.userName);
+      this.quizIsEnded = true;
+      this.quizSubmitEvent.emit(this.points);
+      this.sendResult({
+        userName: this.userName,
+        points: this.points,
+        category: this.category,
+      });
+    }
   }
 
   sendResult(data: Results) {
