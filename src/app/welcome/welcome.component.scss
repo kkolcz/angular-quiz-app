@@ -1,7 +1,17 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  width: 80%;
+  // align-items: center;
+  // border: 1px solid black;
+  // height: auto;
+  width: 85%;
   text-align: center;
+}
+
+.description {
+  margin: 4rem 0 4rem 0px;
+}
+
+.description p {
+  margin-top: 3rem;
 }
