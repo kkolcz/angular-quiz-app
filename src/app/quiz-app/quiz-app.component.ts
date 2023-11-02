@@ -35,7 +35,7 @@ export class QuizAppComponent implements OnInit {
   selectedAnswer: number = -1;
   points: number = 0;
   results: any = null;
-  timeForQuestion = 1;
+  timeForQuestion = 60;
   time: number = 60;
 
   constructor(private quizService: QuizService) {}
