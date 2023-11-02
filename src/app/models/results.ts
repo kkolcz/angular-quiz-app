@@ -1,5 +1,7 @@
 export interface Results {
   category: string;
   points: number;
-  userName: string;
+  username: string;
+  solvedInSeconds: number;
+  totalQuizTime: number;
 }

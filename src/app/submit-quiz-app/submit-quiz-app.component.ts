@@ -11,7 +11,7 @@ export class SubmitQuizAppComponent {
   notification: string = '';
 
   @Input() points: number = 0;
-  @Input() userName: string = 'unknown';
+  @Input() username: string = 'unknown';
 
   restartQuiz() {
     // console.log('restart');

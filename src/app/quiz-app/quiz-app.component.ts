@@ -12,7 +12,7 @@ import { Results } from '../models/results';
 })
 export class QuizAppComponent implements OnInit {
   @Output() quizSubmitEvent = new EventEmitter<number>();
-  @Input() userName: string = 'unknown';
+  @Input() username: string = 'unknown';
   @Input() category: string = '';
 
   error: boolean = false;
@@ -111,13 +111,17 @@ export class QuizAppComponent implements OnInit {
   submitQuiz() {
     if (this.quizIsEnded === false) {
       console.log(this.questionNumber);
-      console.warn(this.userName);
+      console.warn(this.username);
+      const totalQuizTime = this.questionNumber * this.timeForQuestion;
+      const solvedIn = totalQuizTime - this.time;
       this.quizIsEnded = true;
       this.quizSubmitEvent.emit(this.points);
       this.sendResult({
-        userName: this.userName,
+        username: this.username,
         points: this.points,
         category: this.category,
+        solvedInSeconds: solvedIn,
+        totalQuizTime: totalQuizTime,
       });
     }
   }

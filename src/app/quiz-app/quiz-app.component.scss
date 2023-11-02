@@ -11,7 +11,7 @@
   // width: 60vw;
   // min-width: 500px;
   height: 500px;
-  width: 80vw;
+  width: 500px;
 }
 
 .questionContainer {
@@ -27,7 +27,7 @@
 }
 
 .answer {
-  width: 85vw;
+  width: 500px;
   height: 30px;
   // background-color: #f0f0f0;
   border: 1px solid black;
@@ -57,4 +57,15 @@
 
 .points {
   align-self: flex-start;
+}
+
+@media screen and (max-width: 600px) {
+  .quizContainer {
+    height: 500px;
+    width: 80vw;
+  }
+
+  .answer {
+    width: 85vw;
+  }
 }
