@@ -1,33 +1,27 @@
-# AngularQuizApp
+# Angular Quiz
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+<p align="center"><img src="https://github.com/kkolcz/angular-quiz-app/assets/76699027/5e79b47e-2424-475e-829b-fb7544ea730d" alt="Application preview"></p>
 
-## App Preview
+## Live demo
 
-![obraz](https://github.com/kkolcz/angular-quiz-app/assets/76699027/5e79b47e-2424-475e-829b-fb7544ea730d)
+[Demo](https://angular-quiz-application.netlify.app/)
 
-## Development server
+## How to run?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Clone repository and install
 
-## Code scaffolding
+```
+git clone https://github.com/kkolcz/angular-quiz-app.git
+cd angular-quiz-app
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Development server
 
-## Build
+Run `ng serve`.
+The application will start at `http://localhost:4200`.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Build
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-# angular-quiz-app
+Run `ng build` to build the project.
+Builded project will be stored in the `dist/` directory.
