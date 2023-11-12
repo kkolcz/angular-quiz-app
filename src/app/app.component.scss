@@ -23,3 +23,27 @@ main {
   border-radius: 18px;
   margin-top: 60px;
 }
+
+footer {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 30px;
+  background-color: rgba(237, 241, 242, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+}
+
+footer p {
+  color: #ecf0f1;
+}
+
+a,
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
