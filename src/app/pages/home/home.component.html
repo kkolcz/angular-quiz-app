@@ -1,0 +1,17 @@
+<header></header>
+<main>
+    <div class="quizContainer">
+        <app-welcome *ngIf="showWelcome" (closeWelcomeEvent)="closeWelcome()" />
+        <app-start-app *ngIf="!quizStarted && !showWelcome" (quizStartEvent)="startQuiz($event)"
+            (setUserNameEvent)="setUsername($event)" (setCategoryEvent)="setCategory($event)"></app-start-app>
+        <app-quiz-app *ngIf="quizStarted && !quizEnd" [username]="username" [category]="category"
+            (quizSubmitEvent)="submitQuiz($event)"></app-quiz-app>
+        <app-submit-quiz-app *ngIf="quizEnd" [points]="points" (restartQuizEvent)="restartQuiz()"
+            [username]="username"></app-submit-quiz-app>
+    </div>
+</main>
+<footer>
+    <a href="https://github.com/kkolcz/angular-quiz-app">
+        <p>Angular Quiz</p>
+    </a>
+</footer>
