@@ -11,7 +11,11 @@ const routes: Routes = [
   { path: '', component: StartComponent },
   { path: 'quiz', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'admin/results', component: AdminResultsComponent },
+  {
+    path: 'admin',
+    component: AdminResultsComponent,
+    children: [{ path: 'results', component: AdminResultsComponent }],
+  },
 ];
 
 @NgModule({
