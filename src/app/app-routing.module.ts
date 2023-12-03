@@ -5,24 +5,34 @@ import { HomeComponent } from './pages/home/home.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { StartComponent } from './pages/start/start.component';
 import { AdminResultsComponent } from './pages/admin-results/admin-results.component';
+import { AdminCategoriesComponent } from './pages/admin-categories/admin-categories.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 // import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
-  { path: '', component: StartComponent },
+  {
+    path: '',
+    redirectTo: 'quiz',
+    pathMatch: 'full',
+  },
   { path: 'quiz', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
   {
     path: 'admin',
-    component: AdminResultsComponent,
-    children: [{ path: 'results', component: AdminResultsComponent }],
+    component: AdminComponent,
+    children: [
+      { path: 'categories', component: AdminCategoriesComponent },
+      { path: 'results', component: AdminResultsComponent },
+    ],
   },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({
   declarations: [],
   imports: [
     // CommonModule
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { enableTracing: true }),
   ],
   exports: [RouterModule],
 })
