@@ -11,6 +11,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { StartComponent } from './pages/start/start.component';
+import { AdminResultsComponent } from './pages/admin-results/admin-results.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { AdminComponent } from './pages/admin/admin.component';
     WelcomeComponent,
     HomeComponent,
     AdminComponent,
+    StartComponent,
+    AdminResultsComponent,
   ],
   imports: [
     BrowserModule,

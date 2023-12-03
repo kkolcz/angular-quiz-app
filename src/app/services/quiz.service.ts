@@ -23,13 +23,12 @@ export class QuizService {
   }
 
   getResultsArray() {
-    let results: any = [];
-    this.getResultsDb().subscribe((res) => {
+    return this.getResultsDb().subscribe((res) => {
+      let results: any = [];
       for (const [index, value] of Object.entries(res)) {
         results.push(value);
       }
+      return results;
     });
-
-    return results;
   }
 }
