@@ -17,14 +17,17 @@ const routes: Routes = [
   },
   { path: 'quiz', component: HomeComponent },
   { path: 'admin', component: AdminComponent },
-  {
-    path: 'admin',
-    component: AdminComponent,
-    children: [
-      { path: 'categories', component: AdminCategoriesComponent },
-      { path: 'results', component: AdminResultsComponent },
-    ],
-  },
+  { path: 'admin/categories', component: AdminCategoriesComponent },
+  { path: 'admin/results', component: AdminResultsComponent },
+  // {
+  //   path: 'admin',
+  //   component: AdminComponent,
+  //   pathMatch: 'full',
+  //   children: [
+  //     { path: 'categories', component: AdminCategoriesComponent },
+  //     { path: 'results', component: AdminResultsComponent },
+  //   ],
+  // },
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -32,7 +35,7 @@ const routes: Routes = [
   declarations: [],
   imports: [
     // CommonModule
-    RouterModule.forRoot(routes, { enableTracing: true }),
+    RouterModule.forRoot(routes, { enableTracing: false }),
   ],
   exports: [RouterModule],
 })
