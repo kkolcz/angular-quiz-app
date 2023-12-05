@@ -31,4 +31,13 @@ export class QuizService {
       return results;
     });
   }
+
+  getCategories() {
+    const res = this.http.get(`${this.API_KEY}/questions.json`);
+    // res.subscribe((res) => {
+    //   console.log(res);
+    // });
+
+    return res;
+  }
 }
