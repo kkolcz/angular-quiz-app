@@ -10,9 +10,10 @@ export class AdminResultsComponent {
   results: any = [];
 
   constructor(private quizService: QuizService) {
-    this.quizService.getResultsDb().subscribe((res) => {
-      const mapped = Object.values(res);
-      this.results = mapped;
-    });
+    // this.quizService.getCategories2();
+    // this.quizService.getResultsDb().subscribe((res) => {
+    //   const mapped = Object.values(res);
+    //   this.results = mapped;
+    // });
   }
 }
