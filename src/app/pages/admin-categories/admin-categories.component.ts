@@ -11,9 +11,10 @@ export class AdminCategoriesComponent implements OnInit {
   constructor(private quizService: QuizService) {}
 
   categories: any = [];
-  categoriesName: any = [];
-  questionsCategory: string = '';
-  editCategory = '';
+  editCategory: any = '';
+  categoriesName: string = '';
+  isAddingNew = false;
+
   name = new FormControl('');
   question = new FormControl('');
   answer1 = new FormControl('');
@@ -50,7 +51,7 @@ export class AdminCategoriesComponent implements OnInit {
   editQuestion(e: any): void {
     console.log(e);
     this.questions = Object.values(e.value);
-    this.questionsCategory = e.name;
+    this.categoriesName = e.name;
     this.isEditing = true;
     this.questionNr = 0;
     this.loadQuestion();
@@ -59,23 +60,16 @@ export class AdminCategoriesComponent implements OnInit {
 
   loadQuestion() {
     // this.question = ;
-    this.name.setValue(this.questionsCategory);
+
+    this.name.setValue(this.categoriesName);
     this.question.setValue(this.questions[this.questionNr].question);
     this.answer1.setValue(this.questions[this.questionNr].options[0].answer);
     this.answer2.setValue(this.questions[this.questionNr].options[1].answer);
     this.answer3.setValue(this.questions[this.questionNr].options[2].answer);
     this.answer4.setValue(this.questions[this.questionNr].options[3].answer);
 
-    console.log(this.question.value);
+    // console.log(this.question.value);
     // console.log(this.questions[this.questionNr]);
-  }
-
-  addNewCategoryHandler(): void {
-    console.log(this.question.value);
-    console.log(this.answer1.value);
-    console.log(this.answer2.value);
-    console.log(this.answer3.value);
-    console.log(this.answer4.value);
   }
 
   finishHandler(): void {}
@@ -85,8 +79,13 @@ export class AdminCategoriesComponent implements OnInit {
       this.questionNr++;
     }
 
-    console.log(this.questionNr);
-    console.log(this.questions.length);
+    if (this.isAddingNew) {
+    }
+    // console.log(this.questions);
+
+    // console.log(this.questionNr);
+    // console.log(this.questions.length);
+    // this.saveQuestion();
     this.loadQuestion();
   }
 
@@ -94,8 +93,74 @@ export class AdminCategoriesComponent implements OnInit {
     if (this.questionNr > 0) {
       this.questionNr--;
     }
-    console.log(this.questionNr);
-    console.log(this.questions.length);
+    // console.log(this.questionNr);
+    // console.log(this.questions.length);
+    // this.saveQuestion();
     this.loadQuestion();
+  }
+
+  saveQuestion(): void {
+    console.log(this.questions);
+    this.questions[this.questionNr] = {
+      options: [
+        {
+          answer: this.answer1.value,
+          isCorrect: false,
+        },
+        {
+          answer: this.answer2.value,
+          isCorrect: false,
+        },
+        {
+          answer: this.answer3.value,
+          isCorrect: true,
+        },
+        {
+          answer: this.answer4.value,
+          isCorrect: false,
+        },
+      ],
+      question: this.question.value,
+      questionId: this.questionNr + 1,
+    };
+    // this.questions
+    // this.question
+    // this.answer1
+  }
+
+  addNewQuiz(): void {
+    this.isAddingNew = true;
+    this.categoriesName = 'Nowy Quiz';
+    this.questionNr = 0;
+    this.addNewQuestionHandler();
+    console.log(this.questions);
+    this.loadQuestion();
+  }
+
+  addNewQuestionHandler(): void {
+    const QUESTION_DEFAULT = {
+      options: [
+        {
+          answer: 'Wszystkie kręgowce',
+          isCorrect: false,
+        },
+        {
+          answer: 'Tylko ssaki',
+          isCorrect: false,
+        },
+        {
+          answer: 'Ssaki i ptaki',
+          isCorrect: true,
+        },
+        {
+          answer: ' Ryby, gady i ptaki',
+          isCorrect: false,
+        },
+      ],
+      question: 'Które zwierzęta są stałocieplne?',
+      questionId: this.questions.length,
+    };
+
+    this.questions.push(QUESTION_DEFAULT);
   }
 }
