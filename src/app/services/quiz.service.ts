@@ -32,26 +32,8 @@ export class QuizService {
     });
   }
 
-  getCategories_old() {
-    const res = this.http.get(`${this.API_KEY}/questions.json`);
-    // res.subscribe((res) => {
-    //   console.log(res);
-    // });
-
-    return res;
-  }
-
   getCategories() {
     const res = this.http.get(`${this.API_KEY}/questions.json`);
-
-    // let categories: any = [];
-    // res.subscribe((res) => {
-    //   for (const [index, value] of Object.entries(res)) {
-    //     // console.log(index);
-    //     categories.push(index);
-    //   }
-    // });
-
     return res;
   }
 }
