@@ -13,7 +13,7 @@ export class AdminCategoriesComponent implements OnInit {
   categories: any = [];
   editCategory = '';
   name = new FormControl('');
-  question = new FormControl('aa');
+  question = new FormControl('');
   answer1 = new FormControl('');
   answer2 = new FormControl('');
   answer3 = new FormControl('');

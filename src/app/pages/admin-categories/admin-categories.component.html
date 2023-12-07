@@ -1,5 +1,5 @@
-<button routerLink='/admin'>Back</button>
 <div class="appContainer">
+    <button class="btn btn-back" routerLink='/admin'>Back</button>
     <p *ngFor="let category of categories">{{category.name}} <button (click)="editQuestion(category)">EDIT</button></p>
 
     <div style="margin-top: 20px;">
@@ -9,24 +9,31 @@
     </div>
 
     <div>
-        <label for="question">Pytanie {{questionNr}}</label>
-        <input id="question" name="question" value="{{question}}" [formControl]="question">
+        <p>
+            <label for="question">Pytanie {{questionNr + 1}}</label>
+            <input id="question" name="question" value="{{question}}" [formControl]="question">
+        </p>
+        <p>
+            <label for="answer1">Odpowiedź 1</label>
+            <input id="answer1" name="answer1" [formControl]="answer1">
+        </p>
+        <p>
+            <label for="answer2">Odpowiedz 2</label>
+            <input id="answer2" name="answer2" [formControl]="answer2">
+        </p>
+        <p>
+            <label for="answer3">Odpowiedz 3</label>
+            <input id="answer3" name="answer3" [formControl]="answer3">
+        </p>
+        <p>
+            <label for="answer4">Odpowiedz 4</label>
+            <input id="answer4" name="answer4" [formControl]="answer4">
+        </p>
+    </div>
 
-        <label for="answer1">Odpowiedź 1</label>
-        <input id="answer1" name="answer1" [formControl]="answer1">
-
-        <label for="answer2">Odpowiedz 2</label>
-        <input id="answer2" name="answer2" [formControl]="answer2">
-
-        <label for="answer3">Odpowiedz 3</label>
-        <input id="answer3" name="answer3" [formControl]="answer3">
-
-        <label for="answer4">Odpowiedz 4</label>
-        <input id="answer4" name="answer4" [formControl]="answer4">
-
-        <button (click)="prevQuestionHandler()">Poprzednie</button>
-        <button (click)="nextQuestionHandler()">Nastepne</button>
-        <button (click)="finishHandler()">Zakoncz</button>
-
+    <div class="controlButtons">
+        <button class="btn" (click)="prevQuestionHandler()">Poprzednie</button>
+        <button class="btn" (click)="nextQuestionHandler()">Nastepne</button>
+        <button class="btn" (click)="finishHandler()">Zakoncz</button>
     </div>
 </div>
