@@ -16,18 +16,14 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'quiz', component: HomeComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/categories', component: AdminCategoriesComponent },
-  { path: 'admin/results', component: AdminResultsComponent },
-  // {
-  //   path: 'admin',
-  //   component: AdminComponent,
-  //   pathMatch: 'full',
-  //   children: [
-  //     { path: 'categories', component: AdminCategoriesComponent },
-  //     { path: 'results', component: AdminResultsComponent },
-  //   ],
-  // },
+  {
+    path: 'admin',
+    children: [
+      { path: '', component: AdminComponent },
+      { path: 'categories', component: AdminCategoriesComponent },
+      { path: 'results', component: AdminResultsComponent },
+    ],
+  },
   { path: '**', component: PageNotFoundComponent },
 ];
 
