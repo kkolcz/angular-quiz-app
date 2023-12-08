@@ -3,13 +3,18 @@
     <div class="section_categories">
         <h4>Wybierz kategorię pytań</h4>
         <div class="categories">
+            <div *ngFor="let category of categories" class="btn" id="{{category.name}}"
+                (click)="selectCategory($event)">
+                {{category.name}}</div>
+        </div>
+        <!-- <div class="categories">
             <div class="btn" id="animals" (click)="selectCategory($event)">Zwierzęta</div>
             <div class="btn" id="biology" (click)="selectCategory($event)">Biologia</div>
             <div class="btn" id="chemistry" (click)="selectCategory($event)">Chemia</div>
             <div class="btn" id="computerscience" (click)="selectCategory($event)">Informatyka</div>
             <div class="btn" id="geography" (click)="selectCategory($event)">Geografia</div>
             <div class="btn" id="food" (click)="selectCategory($event)">Jedzenie</div>
-        </div>
+        </div> -->
     </div>
 
 

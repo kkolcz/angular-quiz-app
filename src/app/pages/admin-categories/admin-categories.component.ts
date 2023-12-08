@@ -33,7 +33,7 @@ export class AdminCategoriesComponent implements OnInit {
         this.categories.push({ name: index, value: value });
         // this.categoriesName.push(index);
       }
-      console.log(this.categories);
+      // console.log(this.categories);
     });
 
     // this.quizService.getCategories().subscribe((res) => {
