@@ -3,7 +3,8 @@
         <button class="btn" routerLink='/admin'>Back</button>
         <button class="btn" (click)="addNewQuiz()">Add new</button>
     </div>
-    <p *ngFor="let category of categories">{{category.name}} <button (click)="editQuestion(category)">EDIT</button><button (click)="deleteCategory(category)">X</button></p>
+    <p *ngFor="let category of categories">{{category.name}} <button
+            (click)="editQuestion(category)">EDIT</button><button (click)="deleteCategory(category)">X</button></p>
 
     <div *ngIf="categoriesName">
         <div style="margin-top: 20px;">
@@ -12,26 +13,40 @@
         </div>
 
         <div>
-            <p>
-                <label for="question">Pytanie {{questionNr + 1}}/{{questions.length}}</label>
-                <input id="question" name="question" value="{{question}}" [formControl]="question">
-            </p>
-            <p>
-                <label for="answer1">Odpowiedź 1</label>
-                <input id="answer1" name="answer1" [formControl]="answer1">
-            </p>
-            <p>
-                <label for="answer2">Odpowiedz 2</label>
-                <input id="answer2" name="answer2" [formControl]="answer2">
-            </p>
-            <p>
-                <label for="answer3">Odpowiedz 3</label>
-                <input id="answer3" name="answer3" [formControl]="answer3">
-            </p>
-            <p>
-                <label for="answer4">Odpowiedz 4</label>
-                <input id="answer4" name="answer4" [formControl]="answer4">
-            </p>
+            <form>
+                <p>
+                    <label for="question">Pytanie {{questionNr + 1}}/{{questions.length}}</label>
+                    <input id="question" name="question" value="{{question}}" [formControl]="question">
+                </p>
+                <p>
+                    <label for="answer1">Odpowiedź 1</label>
+                    <input id="answer1" name="answer1" [formControl]="answer1">
+                    <input type="radio" name="correct" value="1" [checked]="correctAnswer === 1"
+                        (change)="correctAnswer = 1">
+                    Correct 1
+                </p>
+                <p>
+                    <label for="answer2">Odpowiedz 2</label>
+                    <input id="answer2" name="answer2" [formControl]="answer2">
+                    <input type="radio" name="correct" value="2" [checked]="correctAnswer === 2"
+                        (change)="correctAnswer = 2">
+                    Correct 2
+                </p>
+                <p>
+                    <label for="answer3">Odpowiedz 3</label>
+                    <input id="answer3" name="answer3" [formControl]="answer3">
+                    <input type="radio" name="correct" value="3" [checked]="correctAnswer === 3"
+                        (change)="correctAnswer = 3">
+                    Correct 3
+                </p>
+                <p>
+                    <label for="answer4">Odpowiedz 4</label>
+                    <input id="answer4" name="answer4" [formControl]="answer4">
+                    <input type="radio" name="correct" value="4" [checked]="correctAnswer === 4"
+                        (change)="correctAnswer = 4">
+                    Correct 4
+                </p>
+            </form>
         </div>
 
         <div class="controlButtons">

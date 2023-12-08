@@ -21,7 +21,12 @@ export class AdminCategoriesComponent implements OnInit {
   answer2 = new FormControl('');
   answer3 = new FormControl('');
   answer4 = new FormControl('');
+  radio1 = new FormControl(true);
+  radio2 = new FormControl(false);
+  radio3 = new FormControl(false);
+  radio4 = new FormControl(false);
   questionNr = 0;
+  correctAnswer = 1;
 
   isEditing = false;
   questions: any = [];
@@ -29,7 +34,7 @@ export class AdminCategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.quizService.getCategories().subscribe((res) => {
       for (const [index, value] of Object.entries(res)) {
-        console.log(res);
+        // console.log(res);
         this.categories.push({ name: index, value: value });
         // this.categoriesName.push(index);
       }
@@ -68,6 +73,15 @@ export class AdminCategoriesComponent implements OnInit {
     this.answer3.setValue(this.questions[this.questionNr].options[2].answer);
     this.answer4.setValue(this.questions[this.questionNr].options[3].answer);
 
+    if (this.questions[this.questionNr].options[0].isCorrect === true)
+      this.correctAnswer = 1;
+    if (this.questions[this.questionNr].options[1].isCorrect === true)
+      this.correctAnswer = 2;
+    if (this.questions[this.questionNr].options[2].isCorrect === true)
+      this.correctAnswer = 3;
+    if (this.questions[this.questionNr].options[3].isCorrect === true)
+      this.correctAnswer = 4;
+
     // console.log(this.question.value);
     // console.log(this.questions[this.questionNr]);
   }
@@ -104,24 +118,25 @@ export class AdminCategoriesComponent implements OnInit {
 
   saveQuestion(): void {
     console.log(this.questions);
+    console.log(this.radio1.enabled);
     this.categoriesName = this.name.value as string;
     this.questions[this.questionNr] = {
       options: [
         {
           answer: this.answer1.value,
-          isCorrect: false,
+          isCorrect: this.correctAnswer === 1,
         },
         {
           answer: this.answer2.value,
-          isCorrect: false,
+          isCorrect: this.correctAnswer === 2,
         },
         {
           answer: this.answer3.value,
-          isCorrect: true,
+          isCorrect: this.correctAnswer === 3,
         },
         {
           answer: this.answer4.value,
-          isCorrect: false,
+          isCorrect: this.correctAnswer === 4,
         },
       ],
       question: this.question.value,
