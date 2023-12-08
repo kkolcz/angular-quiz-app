@@ -36,4 +36,21 @@ export class QuizService {
     const res = this.http.get(`${this.API_KEY}/questions.json`);
     return res;
   }
+
+  updateCategories(category: string, newData: any) {
+    console.log(category);
+    this.http
+      .put(`${this.API_KEY}/questions/${category}.json`, newData)
+      .subscribe((res) => {
+        console.log(res);
+      });
+  }
+
+  deleteCategories(category: string) {
+    const a = `${this.API_KEY}/questions/${category}.json`;
+    console.log(a);
+    this.http.delete(a).subscribe((res) => {
+      console.log(res);
+    });
+  }
 }

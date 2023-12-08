@@ -29,7 +29,7 @@ export class AdminCategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.quizService.getCategories().subscribe((res) => {
       for (const [index, value] of Object.entries(res)) {
-        console.log(index);
+        console.log(res);
         this.categories.push({ name: index, value: value });
         // this.categoriesName.push(index);
       }
@@ -49,13 +49,13 @@ export class AdminCategoriesComponent implements OnInit {
   }
 
   editQuestion(e: any): void {
-    console.log(e);
+    // console.log(e);
     this.questions = Object.values(e.value);
     this.categoriesName = e.name;
     this.isEditing = true;
     this.questionNr = 0;
     this.loadQuestion();
-    console.log(this.questions[0]);
+    // console.log(this.questions[0]);
   }
 
   loadQuestion() {
@@ -72,10 +72,13 @@ export class AdminCategoriesComponent implements OnInit {
     // console.log(this.questions[this.questionNr]);
   }
 
-  finishHandler(): void {}
+  finishHandler(): void {
+    console.log(this.questions);
+    this.quizService.updateCategories(this.categoriesName, this.questions);
+  }
 
   nextQuestionHandler(): void {
-    if (this.questionNr + 1 < this.questions.length - 1) {
+    if (this.questionNr + 1 < this.questions.length) {
       this.questionNr++;
     }
 
@@ -101,6 +104,7 @@ export class AdminCategoriesComponent implements OnInit {
 
   saveQuestion(): void {
     console.log(this.questions);
+    this.categoriesName = this.name.value as string;
     this.questions[this.questionNr] = {
       options: [
         {
@@ -141,26 +145,31 @@ export class AdminCategoriesComponent implements OnInit {
     const QUESTION_DEFAULT = {
       options: [
         {
-          answer: 'Wszystkie kręgowce',
+          answer: '',
           isCorrect: false,
         },
         {
-          answer: 'Tylko ssaki',
+          answer: '',
           isCorrect: false,
         },
         {
-          answer: 'Ssaki i ptaki',
+          answer: '',
           isCorrect: true,
         },
         {
-          answer: ' Ryby, gady i ptaki',
+          answer: '',
           isCorrect: false,
         },
       ],
-      question: 'Które zwierzęta są stałocieplne?',
+      question: 'Pytanie?',
       questionId: this.questions.length,
     };
 
     this.questions.push(QUESTION_DEFAULT);
+  }
+
+  deleteCategory(e: any) {
+    console.log(e.name);
+    this.quizService.deleteCategories(e.name);
   }
 }

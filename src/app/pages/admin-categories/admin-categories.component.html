@@ -3,7 +3,7 @@
         <button class="btn" routerLink='/admin'>Back</button>
         <button class="btn" (click)="addNewQuiz()">Add new</button>
     </div>
-    <p *ngFor="let category of categories">{{category.name}} <button (click)="editQuestion(category)">EDIT</button></p>
+    <p *ngFor="let category of categories">{{category.name}} <button (click)="editQuestion(category)">EDIT</button><button (click)="deleteCategory(category)">X</button></p>
 
     <div *ngIf="categoriesName">
         <div style="margin-top: 20px;">
@@ -13,7 +13,7 @@
 
         <div>
             <p>
-                <label for="question">Pytanie {{questionNr + 1}}</label>
+                <label for="question">Pytanie {{questionNr + 1}}/{{questions.length}}</label>
                 <input id="question" name="question" value="{{question}}" [formControl]="question">
             </p>
             <p>
