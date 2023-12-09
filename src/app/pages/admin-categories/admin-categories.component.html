@@ -1,12 +1,15 @@
 <div class="appContainer">
     <div class="btn-back">
         <button class="btn" routerLink='/admin'>Back</button>
-        <button class="btn" (click)="addNewQuiz()">Add new</button>
+        <button class="btn" (click)="createNewQuizHandler()">Add new</button>
     </div>
-    <p *ngFor="let category of categories">{{category.name}} <button
-            (click)="editQuestion(category)">EDIT</button><button (click)="deleteCategory(category)">X</button></p>
+    <div *ngIf="!currEditedCategory">
+        <p *ngFor="let category of categories">{{category.name}}
+            <button (click)="editQuestion(category)">EDIT</button><button (click)="deleteCategory(category)">X</button>
+        </p>
+    </div>
 
-    <div *ngIf="categoriesName">
+    <div *ngIf="currEditedCategory">
         <div style="margin-top: 20px;">
             <label for="name">Nazwa</label>
             <input id="name" name="name" [formControl]="name">
@@ -53,8 +56,9 @@
             <button class="btn" (click)="prevQuestionHandler()">Poprzednie</button>
             <button class="btn" (click)="nextQuestionHandler()">Nastepne</button>
             <button class="btn" (click)="addNewQuestionHandler()">Dodaj</button>
-            <button class="btn" (click)="saveQuestion()">Zapisz</button>
-            <button class="btn" (click)="finishHandler()">Zakoncz</button>
+            <button class="btn" (click)="deleteQuestion()">Usuń</button>
+            <!-- <button class="btn" (click)="saveQuestionHandler()">Zapisz</button> -->
+            <button class="btn" (click)="finishQuizHandler()">Zakoncz</button>
         </div>
     </div>
 </div>

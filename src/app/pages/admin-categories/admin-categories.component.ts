@@ -12,8 +12,8 @@ export class AdminCategoriesComponent implements OnInit {
 
   categories: any = [];
   editCategory: any = '';
-  categoriesName: string = '';
-  isAddingNew = false;
+  currEditedCategory: string = '';
+  // isAddingNew = false;
 
   name = new FormControl('');
   question = new FormControl('');
@@ -28,7 +28,7 @@ export class AdminCategoriesComponent implements OnInit {
   questionNr = 0;
   correctAnswer = 1;
 
-  isEditing = false;
+  // isEditing = false;
   questions: any = [];
 
   ngOnInit(): void {
@@ -56,8 +56,8 @@ export class AdminCategoriesComponent implements OnInit {
   editQuestion(e: any): void {
     // console.log(e);
     this.questions = Object.values(e.value);
-    this.categoriesName = e.name;
-    this.isEditing = true;
+    this.currEditedCategory = e.name;
+    // this.isEditing = true;
     this.questionNr = 0;
     this.loadQuestion();
     // console.log(this.questions[0]);
@@ -66,7 +66,7 @@ export class AdminCategoriesComponent implements OnInit {
   loadQuestion() {
     // this.question = ;
 
-    this.name.setValue(this.categoriesName);
+    this.name.setValue(this.currEditedCategory);
     this.question.setValue(this.questions[this.questionNr].question);
     this.answer1.setValue(this.questions[this.questionNr].options[0].answer);
     this.answer2.setValue(this.questions[this.questionNr].options[1].answer);
@@ -86,40 +86,51 @@ export class AdminCategoriesComponent implements OnInit {
     // console.log(this.questions[this.questionNr]);
   }
 
-  finishHandler(): void {
-    console.log(this.questions);
-    this.quizService.updateCategories(this.categoriesName, this.questions);
+  cleanQuestions() {
+    this.name.setValue('');
+    this.question.setValue('');
+    this.answer1.setValue('');
+    this.answer2.setValue('');
+    this.answer3.setValue('');
+    this.answer4.setValue('');
+    this.questionNr = 0;
   }
 
+  // ZAKOŃCZENIE EDYCJI KATEGORII
+  finishQuizHandler(): void {
+    // console.log(this.questions);
+    this.saveQuestionHandler();
+    this.quizService.updateCategories(this.currEditedCategory, this.questions);
+    this.currEditedCategory = '';
+  }
+
+  // PORUSZANIE SIĘ PO PYTANIACH
+  // NASTĘPNE PYTANIE
   nextQuestionHandler(): void {
+    this.saveQuestionHandler();
+
     if (this.questionNr + 1 < this.questions.length) {
       this.questionNr++;
     }
 
-    if (this.isAddingNew) {
-    }
-    // console.log(this.questions);
-
-    // console.log(this.questionNr);
-    // console.log(this.questions.length);
-    // this.saveQuestion();
     this.loadQuestion();
   }
 
+  // POPRZEDNIE PYTANIE
   prevQuestionHandler(): void {
+    this.saveQuestionHandler();
+
     if (this.questionNr > 0) {
       this.questionNr--;
     }
-    // console.log(this.questionNr);
-    // console.log(this.questions.length);
-    // this.saveQuestion();
     this.loadQuestion();
   }
 
-  saveQuestion(): void {
+  // ZAPISANIE PYTANIA DO ZMIENNEJ
+  saveQuestionHandler(): void {
     console.log(this.questions);
     console.log(this.radio1.enabled);
-    this.categoriesName = this.name.value as string;
+    this.currEditedCategory = this.name.value as string;
     this.questions[this.questionNr] = {
       options: [
         {
@@ -147,26 +158,25 @@ export class AdminCategoriesComponent implements OnInit {
     // this.answer1
   }
 
-  addNewQuiz(): void {
-    this.isAddingNew = true;
-    this.categoriesName = 'Nowy Quiz';
+  // UTWORZENIE NOWEGO QUIZU
+  createNewQuizHandler(): void {
+    this.cleanQuestions();
+    // this.isAddingNew = true;
+    this.currEditedCategory = 'Nowy Quiz';
+    this.name.setValue('Nowy Quiz');
     this.questionNr = 0;
-    this.addNewQuestionHandler();
-    console.log(this.questions);
-    this.loadQuestion();
+    this.questions = [];
+    // this.addNewQuestionHandler();
+    console.log(this.currEditedCategory);
+    // console.log(this.questions);
+    // this.loadQuestion();
   }
 
+  // DODANIE NOWEGO PYTANIA
   addNewQuestionHandler(): void {
+    this.saveQuestionHandler();
     const QUESTION_DEFAULT = {
       options: [
-        {
-          answer: '',
-          isCorrect: false,
-        },
-        {
-          answer: '',
-          isCorrect: false,
-        },
         {
           answer: '',
           isCorrect: true,
@@ -175,16 +185,38 @@ export class AdminCategoriesComponent implements OnInit {
           answer: '',
           isCorrect: false,
         },
+        {
+          answer: '',
+          isCorrect: false,
+        },
+        {
+          answer: '',
+          isCorrect: false,
+        },
       ],
-      question: 'Pytanie?',
+      question: '',
       questionId: this.questions.length,
     };
 
     this.questions.push(QUESTION_DEFAULT);
+    this.questionNr = this.questions.length - 1;
+    this.loadQuestion();
+    console.log(this.questions);
+  }
+
+  deleteQuestion() {
+    console.log(this.questions);
+    const index = 1;
+    const A = this.questions.slice(0, index);
+    const B = this.questions.slice(index + 1);
+    const C = A.concat(B);
+
+    const newQuestionsList = this.questions.slice(2, 4);
+    console.log(C);
   }
 
   deleteCategory(e: any) {
-    console.log(e.name);
+    // console.log(e.name);
     this.quizService.deleteCategories(e.name);
   }
 }
