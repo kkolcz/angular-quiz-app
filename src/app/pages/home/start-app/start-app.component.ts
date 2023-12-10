@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import { QuizService } from '../services/quiz.service';
+import { QuizService } from '../../../services/quiz.service';
 
 @Component({
   selector: 'app-start-app',
@@ -14,15 +14,18 @@ export class StartAppComponent implements OnInit {
   @Output() setCategoryEvent = new EventEmitter<string>();
 
   categories: any = [];
+  isLoading: boolean = true;
   constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.quizService.getCategories().subscribe((res) => {
       for (const [index, value] of Object.entries(res)) {
         // console.log(res);
         this.categories.push({ name: index, value: value });
         // this.categoriesName.push(index);
       }
+      this.isLoading = false;
     });
   }
 

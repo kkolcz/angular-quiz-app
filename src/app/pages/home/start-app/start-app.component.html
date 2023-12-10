@@ -2,7 +2,8 @@
 
     <div class="section_categories">
         <h4>Wybierz kategorię pytań</h4>
-        <div class="categories">
+        <div *ngIf="isLoading"><app-loading /></div>
+        <div *ngIf="!isLoading" class="categories">
             <div *ngFor="let category of categories" class="btn" id="{{category.name}}"
                 (click)="selectCategory($event)">
                 {{category.name}}</div>

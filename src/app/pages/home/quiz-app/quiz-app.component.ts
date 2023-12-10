@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import { QuizService } from '../services/quiz.service';
-import { Questions } from '../models/questions';
-import { Results } from '../models/results';
+import { QuizService } from '../../../services/quiz.service';
+import { Questions } from '../../../models/questions';
+import { Results } from '../../../models/results';
 
 @Component({
   selector: 'app-quiz-app',

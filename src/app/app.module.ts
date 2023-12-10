@@ -3,19 +3,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { QuizAppComponent } from './quiz-app/quiz-app.component';
-import { StartAppComponent } from './start-app/start-app.component';
+import { QuizAppComponent } from './pages/home/quiz-app/quiz-app.component';
+import { StartAppComponent } from './pages/home/start-app/start-app.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SubmitQuizAppComponent } from './submit-quiz-app/submit-quiz-app.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { SubmitQuizAppComponent } from './pages/home/submit-app/submit-quiz-app.component';
+import { WelcomeComponent } from './pages/home/welcome-app/welcome.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { AdminComponent } from './pages/admin/admin.component';
-import { StartComponent } from './pages/start/start.component';
-import { AdminResultsComponent } from './pages/admin-results/admin-results.component';
-import { AdminCategoriesComponent } from './pages/admin-categories/admin-categories.component';
+import { AdminResultsComponent } from './pages/admin/admin-results/admin-results.component';
+import { AdminCategoriesComponent } from './pages/admin/admin-categories/admin-categories.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -26,11 +26,11 @@ import { LoginComponent } from './pages/login/login.component';
     WelcomeComponent,
     HomeComponent,
     AdminComponent,
-    StartComponent,
     AdminResultsComponent,
     AdminCategoriesComponent,
     PageNotFoundComponent,
     LoginComponent,
+    LoadingComponent,
   ],
   imports: [
     BrowserModule,

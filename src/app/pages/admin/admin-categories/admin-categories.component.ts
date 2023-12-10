@@ -10,6 +10,8 @@ import { QuizService } from 'src/app/services/quiz.service';
 export class AdminCategoriesComponent implements OnInit {
   constructor(private quizService: QuizService) {}
 
+  isLoading: boolean = true;
+
   categories: any = [];
   editCategory: any = '';
   currEditedCategory: string = '';
@@ -32,12 +34,14 @@ export class AdminCategoriesComponent implements OnInit {
   questions: any = [];
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.quizService.getCategories().subscribe((res) => {
       for (const [index, value] of Object.entries(res)) {
         // console.log(res);
         this.categories.push({ name: index, value: value });
         // this.categoriesName.push(index);
       }
+      this.isLoading = false;
       // console.log(this.categories);
     });
 
