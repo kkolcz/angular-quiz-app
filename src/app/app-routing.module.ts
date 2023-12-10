@@ -7,6 +7,7 @@ import { StartComponent } from './pages/start/start.component';
 import { AdminResultsComponent } from './pages/admin-results/admin-results.component';
 import { AdminCategoriesComponent } from './pages/admin-categories/admin-categories.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoginComponent } from './pages/login/login.component';
 // import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
@@ -16,10 +17,11 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   { path: 'quiz', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   {
     path: 'admin',
+    component: AdminComponent,
     children: [
-      { path: '', component: AdminComponent },
       { path: 'categories', component: AdminCategoriesComponent },
       { path: 'results', component: AdminResultsComponent },
     ],

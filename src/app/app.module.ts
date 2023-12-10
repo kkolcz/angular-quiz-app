@@ -15,6 +15,7 @@ import { StartComponent } from './pages/start/start.component';
 import { AdminResultsComponent } from './pages/admin-results/admin-results.component';
 import { AdminCategoriesComponent } from './pages/admin-categories/admin-categories.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     AdminResultsComponent,
     AdminCategoriesComponent,
     PageNotFoundComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
