@@ -1,7 +1,5 @@
 .appContainer {
   display: flex;
-  // justify-content: space-around;
-  // align-items: center;
   background-color: #ecf0f1;
   min-height: 700px;
   width: 700px;
@@ -12,10 +10,6 @@
 
 .btn {
   margin: 5px;
-}
-
-.buttons {
-  // margin-bottom: 30px;
 }
 
 .router-outlet {
