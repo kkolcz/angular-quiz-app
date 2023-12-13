@@ -19,6 +19,10 @@ export class AdminComponent {
   }
 
   signIn(login: string, password: string) {
-    this.authService.signIn({ login: login, password: password });
+    this.authService.signIn(login, password);
+  }
+
+  signUp(login: string, password: string) {
+    this.authService.signUp(login, password);
   }
 }

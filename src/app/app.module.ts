@@ -2,6 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+
+import { environment } from 'src/app/environments/enviroments';
+
 import { AppComponent } from './app.component';
 import { QuizAppComponent } from './pages/home/quiz-app/quiz-app.component';
 import { StartAppComponent } from './pages/home/start-app/start-app.component';
@@ -37,6 +45,11 @@ import { LoadingComponent } from './components/loading/loading.component';
     HttpClientModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
