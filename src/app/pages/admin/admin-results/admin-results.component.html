@@ -1,8 +1,30 @@
 <span *ngIf="isLoading"><app-loading /></span>
+
 <div class="code" *ngIf="!isLoading">
-    <code>
-    <p>Username | Category | Points</p>
-    <p *ngFor="let res of results">{{res.username}} | {{res.category}} | {{res.points}}</p>
-</code>
+    <table class="pure-table">
+        <thead>
+            <tr>
+                <th>Nazwa użytkownika</th>
+                <th>Kategoria pytań</th>
+                <th>Czas rozwiązania</th>
+                <th>Wynik</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let res of results">
+                <th>{{res.username}}</th>
+                <th>{{res.category}}</th>
+                <th>380s</th>
+                <th>{{res.points}} / X</th>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <!-- <code>
+        <p>Username | Category | Points</p>
+        <p *ngFor="let res of results">{{res.username}} | {{res.category}} | {{res.points}}</p>
+    </code> -->
+
 </div>
 <!-- <button class="btn btn-back" routerLink='/admin'>Back</button> -->

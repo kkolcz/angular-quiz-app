@@ -14,6 +14,10 @@ export class AdminComponent {
     private authService: AuthService
   ) {}
 
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn;
+  }
+
   categories() {
     this.router.navigate(['categories'], { relativeTo: this.route });
   }

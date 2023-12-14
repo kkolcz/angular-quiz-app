@@ -2,16 +2,17 @@
     <div class="buttonsPanel">
         <h1 class="title">Admin Page</h1>
         <span class="buttons">
-            <button class="btn" routerLink='/'>Quiz</button>
-            <button class="btn" routerLink='/admin/categories'>Categories</button>
-            <button class="btn" routerLink='/admin/results'>Results</button>
+            <button class="btn" routerLink='/'>Back to Quiz</button>
+            <button class="btn" routerLink='/admin/categories' *ngIf="isLoggedIn()">Categories</button>
+            <button class="btn" routerLink='/admin/results' *ngIf="isLoggedIn()">Results</button>
+            <input type="button" class="btn" value="logout" (click)="logout()" *ngIf="isLoggedIn()">
         </span>
     </div>
     <div class="router-outlet">
         <router-outlet></router-outlet>
     </div>
 </div>
-<div class="authBlock">
+<div class="authBlock" *ngIf="!isLoggedIn()">
     <h3>Zaloguj</h3>
     <div class="form-group">
         <input type="text" class="form-controll" placeholder="username" #userName required />
@@ -22,6 +23,5 @@
     <div class="form-group">
         <input type="button" class="btn" value="login" (click)="signIn(userName.value, userPassword.value)">
         <input type="button" class="btn" value="register" (click)="signUp(userName.value, userPassword.value)">
-        <input type="button" class="btn" value="logout" (click)="logout()">
     </div>
 </div>
