@@ -5,8 +5,9 @@
         <thead>
             <tr>
                 <th>Nazwa użytkownika</th>
-                <th>Kategoria pytań</th>
-                <th>Czas rozwiązania</th>
+                <th>Kategoria</th>
+                <th>Czas</th>
+                <th>Data</th>
                 <th>Wynik</th>
             </tr>
         </thead>
@@ -14,8 +15,9 @@
             <tr *ngFor="let res of results">
                 <th>{{res.username}}</th>
                 <th>{{res.category}}</th>
-                <th>380s</th>
-                <th>{{res.points}} / X</th>
+                <th>{{res.solvedInSeconds}}s / {{res.totalQuizTime}}s</th>
+                <th>{{res.datetime}}</th>
+                <th>{{res.points}} / {{res.maxPoints}}</th>
             </tr>
         </tbody>
     </table>

@@ -35,7 +35,7 @@ export class StartAppComponent implements OnInit {
   error: string = '';
 
   setQuizStart() {
-    console.warn(this.name.value);
+    // console.warn(this.name.value);
     if (this.name.value === '') {
       this.error = 'Nie wprowadzono nazwy użytkownika!';
       return;

@@ -42,6 +42,7 @@ export class QuizAppComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadQuestions();
+    this.sendStartQuiz(this.username, this.category);
 
     const interval = setInterval(() => {
       this.time--;
@@ -119,9 +120,11 @@ export class QuizAppComponent implements OnInit {
       this.sendResult({
         username: this.username,
         points: this.points,
+        maxPoints: this.questionsList.length,
         category: this.category,
         solvedInSeconds: solvedIn,
         totalQuizTime: totalQuizTime,
+        datetime: new Date().toLocaleString('pl-PL').toString(),
       });
     }
   }
@@ -129,11 +132,23 @@ export class QuizAppComponent implements OnInit {
   sendResult(data: Results) {
     this.quizService.sendResultDb(data).subscribe(
       (res) => {
-        console.log('Successfully sent data', res, data);
+        // console.log('Successfully sent data', res, data);
       },
       (err) => {
         console.error('Error', err);
       }
     );
+  }
+
+  sendStartQuiz(username, category) {
+    this.sendResult({
+      username: this.username,
+      points: 0,
+      maxPoints: 0,
+      category: `${this.category}(started)`,
+      solvedInSeconds: 0,
+      totalQuizTime: 0,
+      datetime: new Date().toLocaleString('pl-PL').toString(),
+    });
   }
 }
