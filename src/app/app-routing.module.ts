@@ -7,6 +7,7 @@ import { AdminResultsComponent } from './pages/admin/admin-results/admin-results
 import { AdminCategoriesComponent } from './pages/admin/admin-categories/admin-categories.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
+import { authGuard } from './guard/auth.guard';
 // import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
@@ -21,8 +22,8 @@ const routes: Routes = [
     path: 'admin',
     component: AdminComponent,
     children: [
-      { path: 'categories', component: AdminCategoriesComponent },
-      { path: 'results', component: AdminResultsComponent },
+      { path: 'categories', component: AdminCategoriesComponent, canActivate: [authGuard] },
+      { path: 'results', component: AdminResultsComponent, canActivate: [authGuard] },
     ],
   },
   { path: '**', component: PageNotFoundComponent },

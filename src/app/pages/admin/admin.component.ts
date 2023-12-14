@@ -25,4 +25,8 @@ export class AdminComponent {
   signUp(login: string, password: string) {
     this.authService.signUp(login, password);
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }
