@@ -1,6 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { throwError } from 'rxjs';
 import { QuizService } from '../../../services/quiz.service';
 import { Questions } from '../../../models/questions';
 import { Results } from '../../../models/results';
@@ -52,24 +50,11 @@ export class QuizAppComponent implements OnInit {
       }
     }, 1000);
 
-    // this.quizService.getResultsDb().subscribe((res) => {
-    //   let results = [];
-    //   console.log(res);
-    //   for (const [index, value] of Object.entries(res)) {
-    //     results.push(value);
-    //   }
-    //   // console.log(results);
-    //   return results;
-    // });
-
     this.results = this.quizService.getResultsArray();
     console.log(this.results);
   }
 
   loadQuestions() {
-    // const apiUrl = 'http://localhost:3000/questions'
-    // this.loading = true;
-
     this.isLoading = true;
     this.quizService.load(this.category).subscribe((res) => {
       this.questionsList = res as Questions[];
@@ -77,8 +62,6 @@ export class QuizAppComponent implements OnInit {
       console.log(res);
       this.isLoading = false;
     });
-    // this.loading = false;
-    // console.log(this.questionsList);
   }
 
   nextQuestion() {
@@ -86,7 +69,6 @@ export class QuizAppComponent implements OnInit {
       this.questionNumber++;
     } else {
       this.submitQuiz();
-      // this.time = 0;
     }
   }
 
@@ -117,6 +99,8 @@ export class QuizAppComponent implements OnInit {
       const solvedIn = totalQuizTime - this.time;
       this.quizIsEnded = true;
       this.quizSubmitEvent.emit(this.points);
+
+      // SUBMIT QUIZ
       this.sendResult({
         username: this.username,
         points: this.points,
@@ -131,21 +115,20 @@ export class QuizAppComponent implements OnInit {
 
   sendResult(data: Results) {
     this.quizService.sendResultDb(data).subscribe(
-      (res) => {
-        // console.log('Successfully sent data', res, data);
-      },
+      (res) => {},
       (err) => {
         console.error('Error', err);
       }
     );
   }
 
-  sendStartQuiz(username, category) {
+  // SEND START QUIZ
+  sendStartQuiz(username: string, category: string) {
     this.sendResult({
-      username: this.username,
+      username: username,
       points: 0,
       maxPoints: 0,
-      category: `${this.category}(started)`,
+      category: `${category}(started)`,
       solvedInSeconds: 0,
       totalQuizTime: 0,
       datetime: new Date().toLocaleString('pl-PL').toString(),
