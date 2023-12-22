@@ -53,4 +53,12 @@ export class QuizService {
       console.log(res);
     });
   }
+
+  deleteResult(uid: string) {
+    const a = `${this.API_KEY}/results/${uid}.json`;
+    console.log(a);
+    this.http.delete(a).subscribe((res) => {
+      console.log(res);
+    });
+  }
 }

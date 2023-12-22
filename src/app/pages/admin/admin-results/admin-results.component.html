@@ -1,7 +1,7 @@
 <span *ngIf="isLoading"><app-loading /></span>
 
 <div class="code" *ngIf="!isLoading">
-    <table class="pure-table">
+    <table class="pure-table table">
         <thead>
             <tr>
                 <th>Nazwa użytkownika</th>
@@ -9,15 +9,17 @@
                 <th>Czas</th>
                 <th>Data</th>
                 <th>Wynik</th>
+                <th>Buttons</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let res of results">
-                <th>{{res.username}}</th>
-                <th>{{res.category}}</th>
-                <th>{{res.solvedInSeconds}}s / {{res.totalQuizTime}}s</th>
-                <th>{{res.datetime}}</th>
-                <th>{{res.points}} / {{res.maxPoints}}</th>
+                <th>{{res[1].username}}</th>
+                <th>{{res[1].category}}</th>
+                <th>{{res[1].solvedInSeconds}}s / {{res[1].totalQuizTime}}s</th>
+                <th>{{res[1].datetime}}</th>
+                <th>{{res[1].points}} / {{res[1].maxPoints}}</th>
+                <th><button (click)="deleteHandler(res[0])">X</button></th>
             </tr>
         </tbody>
     </table>

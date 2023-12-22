@@ -14,9 +14,18 @@ export class AdminResultsComponent {
     this.isLoading = true;
     // this.quizService.getCategories();
     this.quizService.getResultsDb().subscribe((res) => {
-      const mapped = Object.values(res);
-      this.results = mapped;
+      // console.log(res);
+      // const mapped = Object.values(res);
+      const result = Object.keys(res).map((key) => [key, res[key]]);
+      // console.log(Object.values(res));
+      // console.log(Object.keys(res));
+      this.results = result;
       this.isLoading = false;
     });
+  }
+
+  deleteHandler(event: string) {
+    // console.log('Delete: ', event);
+    this.quizService.deleteResult(event);
   }
 }
