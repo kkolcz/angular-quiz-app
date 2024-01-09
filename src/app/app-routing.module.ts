@@ -11,21 +11,16 @@ import { authGuard } from './guard/auth.guard';
 // import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   redirectTo: 'home',
-  //   pathMatch: 'full',
-  // },
   { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  {
-    path: 'admin',
-    component: AdminComponent,
-    children: [
-      { path: 'categories', component: AdminCategoriesComponent, canActivate: [authGuard] },
-      { path: 'results', component: AdminResultsComponent, canActivate: [authGuard] },
-    ],
-  },
+  // { path: 'login', component: LoginComponent },
+  // {
+  //   path: 'admin',
+  //   component: AdminComponent,
+  //   children: [
+  //     { path: 'categories', component: AdminCategoriesComponent, canActivate: [authGuard] },
+  //     { path: 'results', component: AdminResultsComponent, canActivate: [authGuard] },
+  //   ],
+  // },
   { path: '**', component: PageNotFoundComponent },
 ];
 
