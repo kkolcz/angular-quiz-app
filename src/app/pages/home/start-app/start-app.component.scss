@@ -38,6 +38,13 @@ h4 {
 
 .userName {
   margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userName > p {
+  margin-bottom: 10px;
 }
 
 .controlsButtons {
