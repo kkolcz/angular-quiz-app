@@ -20,7 +20,8 @@
         <div>
             <form>
                 <p>
-                    <label for="question">Pytanie {{questionNr + 1}}/{{questions.length}}</label>
+                    <label for="question">Pytanie {{questionNr + 1}}/{{questions.length ? questions.length :
+                        '1'}}</label>
                     <input id="question" name="question" value="{{question}}" [formControl]="question">
                 </p>
                 <p>
