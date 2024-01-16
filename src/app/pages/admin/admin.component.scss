@@ -27,3 +27,21 @@
 .buttonsPanel {
   text-align: center;
 }
+
+.authBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.authBlock > h2 {
+  margin-bottom: 20px;
+}
+
+.authBlock > .form-group {
+  margin: 5px;
+}
+
+.notification {
+  margin-top: 5rem;
+}

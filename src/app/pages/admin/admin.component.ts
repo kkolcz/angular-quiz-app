@@ -18,20 +18,20 @@ export class AdminComponent {
     return this.authService.isLoggedIn;
   }
 
-  categories() {
+  categories(): void {
     this.router.navigate(['categories'], { relativeTo: this.route });
   }
 
-  signIn(login: string, password: string) {
+  signIn(login: string, password: string): void {
     this.authService.signIn(login, password);
   }
 
-  signUp(login: string, password: string) {
+  signUp(login: string, password: string): void {
     alert('Rejestracja wyłączona!');
     // this.authService.signUp(login, password);
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
   }
 }
