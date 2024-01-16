@@ -27,7 +27,8 @@ export class AdminComponent {
   }
 
   signUp(login: string, password: string) {
-    this.authService.signUp(login, password);
+    alert('Rejestracja wyłączona!');
+    // this.authService.signUp(login, password);
   }
 
   logout() {

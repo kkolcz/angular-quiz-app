@@ -1,11 +1,11 @@
 <div>
     <div class="buttonsPanel">
-        <h1 class="title">Admin Page</h1>
+        <h1 class="title">Administracja</h1>
         <span class="buttons">
-            <button class="btn" routerLink='/'>Back to Quiz</button>
-            <button class="btn" routerLink='/admin/categories' *ngIf="isLoggedIn()">Categories</button>
-            <button class="btn" routerLink='/admin/results' *ngIf="isLoggedIn()">Results</button>
-            <input type="button" class="btn" value="logout" (click)="logout()" *ngIf="isLoggedIn()">
+            <button class="btn" routerLink='/'>Powrót</button>
+            <button class="btn" routerLink='/admin/categories' *ngIf="isLoggedIn()">Kategorie</button>
+            <button class="btn" routerLink='/admin/results' *ngIf="isLoggedIn()">Wyniki</button>
+            <input type="button" class="btn" value="Wyloguj" (click)="logout()" *ngIf="isLoggedIn()">
         </span>
     </div>
     <div class="router-outlet">
@@ -21,7 +21,7 @@
         <input type="password" class="form-controll" placeholder="password" #userPassword required />
     </div>
     <div class="form-group">
-        <input type="button" class="btn" value="login" (click)="signIn(userName.value, userPassword.value)">
-        <input type="button" class="btn" value="register" (click)="signUp(userName.value, userPassword.value)">
+        <input type="button" class="btn" value="Zaloguj" (click)="signIn(userName.value, userPassword.value)">
+        <input type="button" class="btn" value="Zarejestruj" (click)="signUp(userName.value, userPassword.value)">
     </div>
 </div>
