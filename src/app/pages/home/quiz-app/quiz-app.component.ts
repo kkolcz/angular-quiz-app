@@ -21,6 +21,7 @@ export class QuizAppComponent implements OnInit {
     {
       questionId: -1,
       question: '',
+      time: 60,
       options: [
         { answer: '', isCorrect: false },
         { answer: '', isCorrect: false },
@@ -58,7 +59,8 @@ export class QuizAppComponent implements OnInit {
     this.isLoading = true;
     this.quizService.load(this.category).subscribe((res) => {
       this.questionsList = res as Questions[];
-      this.time = this.questionsList.length * this.timeForQuestion;
+      // this.time = this.questionsList.length * this.timeForQuestion;
+      this.time = this.questionsList[0].time;
       console.log(res);
       this.isLoading = false;
     });

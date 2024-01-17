@@ -72,7 +72,7 @@ export class AdminCategoriesComponent implements OnInit {
     // this.question = ;
 
     this.name.setValue(this.currEditedCategory);
-    this.time.setValue(this.questions[this.questionNr].time);
+    this.time.setValue(this.questions[0].time);
     this.question.setValue(this.questions[this.questionNr].question);
     this.answer1.setValue(this.questions[this.questionNr].options[0].answer);
     this.answer2.setValue(this.questions[this.questionNr].options[1].answer);
