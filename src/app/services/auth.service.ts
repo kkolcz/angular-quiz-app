@@ -42,7 +42,7 @@ export class AuthService {
       .then((result) => {
         this.afAuth.authState.subscribe((user) => {
           if (user) {
-            window.alert('zalogowano');
+            window.alert('Zalogowano pomyślnie!');
             this.router.navigate(['admin', 'results']);
           }
         });
@@ -56,8 +56,6 @@ export class AuthService {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign 
-        up and returns promise */
         window.alert('zarejestrowano');
       })
       .catch((error) => {

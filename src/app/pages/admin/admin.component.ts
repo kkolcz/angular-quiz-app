@@ -18,9 +18,9 @@ export class AdminComponent {
     return this.authService.isLoggedIn;
   }
 
-  categories(): void {
-    this.router.navigate(['categories'], { relativeTo: this.route });
-  }
+  // categories(): void {
+  //   this.router.navigate(['categories'], { relativeTo: this.route });
+  // }
 
   signIn(login: string, password: string): void {
     this.authService.signIn(login, password);
