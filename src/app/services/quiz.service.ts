@@ -1,25 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from '../environments/enviroments';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuizService {
-  API_KEY = 'https://quiz-angular-55f08-default-rtdb.firebaseio.com';
+  API_URL = environment.API_URL;
   constructor(private http: HttpClient) {}
 
   load(category: string) {
-    const apiUrl = `${this.API_KEY}/questions/${category}.json`;
+    const apiUrl = `${this.API_URL}/questions/${category}.json`;
 
     return this.http.get(apiUrl);
   }
 
   sendResultDb(data: any) {
-    return this.http.post(`${this.API_KEY}/results.json`, data);
+    return this.http.post(`${this.API_URL}/results.json`, data);
   }
 
   getResultsDb() {
-    return this.http.get(`${this.API_KEY}/results.json`);
+    return this.http.get(`${this.API_URL}/results.json`);
   }
 
   getResultsArray() {
@@ -33,21 +34,21 @@ export class QuizService {
   }
 
   getCategories() {
-    const res = this.http.get(`${this.API_KEY}/questions.json`);
+    const res = this.http.get(`${this.API_URL}/questions.json`);
     return res;
   }
 
   updateCategories(category: string, newData: any) {
     console.log(category);
     this.http
-      .put(`${this.API_KEY}/questions/${category}.json`, newData)
+      .put(`${this.API_URL}/questions/${category}.json`, newData)
       .subscribe((res) => {
         console.log(res);
       });
   }
 
   deleteCategories(category: string) {
-    const a = `${this.API_KEY}/questions/${category}.json`;
+    const a = `${this.API_URL}/questions/${category}.json`;
     console.log(a);
     this.http.delete(a).subscribe((res) => {
       console.log(res);
@@ -55,7 +56,7 @@ export class QuizService {
   }
 
   deleteResult(uid: string) {
-    const a = `${this.API_KEY}/results/${uid}.json`;
+    const a = `${this.API_URL}/results/${uid}.json`;
     console.log(a);
     this.http.delete(a).subscribe((res) => {
       console.log(res);

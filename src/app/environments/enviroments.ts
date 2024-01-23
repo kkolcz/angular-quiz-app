@@ -1,5 +1,6 @@
 export const environment = {
   production: 'false',
+  API_URL: 'https://quiz-angular-55f08-default-rtdb.firebaseio.com',
   firebase: {
     apiKey: 'AIzaSyBcu8kSv8-9rwAnB3i572oTwWXL28gxM3k',
     authDomain: 'angular-learning-51cd7.firebaseapp.com',
