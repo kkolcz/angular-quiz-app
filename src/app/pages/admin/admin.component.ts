@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from '../../environments/enviroments';
 
 @Component({
   selector: 'app-admin',
@@ -27,8 +28,11 @@ export class AdminComponent {
   }
 
   signUp(login: string, password: string): void {
-    alert('Rejestracja wyłączona!');
-    // this.authService.signUp(login, password);
+    if (environment.enable_admin_register) {
+      this.authService.signUp(login, password);
+    } else {
+      alert('Rejestracja wyłączona!');
+    }
   }
 
   logout(): void {
