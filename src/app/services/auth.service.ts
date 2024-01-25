@@ -20,12 +20,8 @@ interface loginData {
 })
 export class AuthService {
   userData: any;
-  constructor(
-    public afAuth: AngularFireAuth, // Inject Firebase auth service
-    public router: Router
-  ) {
+  constructor(public afAuth: AngularFireAuth, public router: Router) {
     this.afAuth.authState.subscribe((user) => {
-      // console.log(user);
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
@@ -56,7 +52,7 @@ export class AuthService {
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        window.alert('zarejestrowano');
+        window.alert('Zarejestrowano pomyślnie!');
       })
       .catch((error) => {
         window.alert(error.message);
@@ -66,7 +62,6 @@ export class AuthService {
   logout() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      console.log('logout');
       this.router.navigate(['admin']);
     });
   }
