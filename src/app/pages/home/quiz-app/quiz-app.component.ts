@@ -52,16 +52,13 @@ export class QuizAppComponent implements OnInit {
     }, 1000);
 
     this.results = this.quizService.getResultsArray();
-    console.log(this.results);
   }
 
   loadQuestions() {
     this.isLoading = true;
     this.quizService.load(this.category).subscribe((res) => {
       this.questionsList = res as Questions[];
-      // this.time = this.questionsList.length * this.timeForQuestion;
       this.time = this.questionsList[0].time;
-      console.log(res);
       this.isLoading = false;
     });
   }
@@ -85,7 +82,6 @@ export class QuizAppComponent implements OnInit {
     const answerIs =
       this.questionsList[this.questionNumber - 1].options[answer].isCorrect;
 
-    console.log(answerIs);
     if (answerIs) {
       this.points++;
     }
@@ -95,8 +91,6 @@ export class QuizAppComponent implements OnInit {
 
   submitQuiz() {
     if (this.quizIsEnded === false) {
-      console.log(this.questionNumber);
-      console.warn(this.username);
       const totalQuizTime = this.questionNumber * this.timeForQuestion;
       const solvedIn = totalQuizTime - this.time;
       this.quizIsEnded = true;

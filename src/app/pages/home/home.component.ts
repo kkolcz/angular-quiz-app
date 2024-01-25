@@ -41,6 +41,5 @@ export class HomeComponent {
     this.quizStarted = false;
     this.quizEnd = false;
     this.points = 0;
-    // console.log('restarttttt');
   }
 }

@@ -15,7 +15,6 @@ export class AdminCategoriesComponent implements OnInit {
   categories: any = [];
   editCategory: any = '';
   currEditedCategory: string = '';
-  // isAddingNew = false;
 
   name = new FormControl('');
   time = new FormControl();
@@ -31,46 +30,26 @@ export class AdminCategoriesComponent implements OnInit {
   questionNr = 0;
   correctAnswer = 1;
 
-  // isEditing = false;
   questions: any = [];
 
   ngOnInit(): void {
     this.isLoading = true;
     this.quizService.getCategories().subscribe((res) => {
       for (const [index, value] of Object.entries(res)) {
-        // console.log(res);
         this.categories.push({ name: index, value: value });
-        // this.categoriesName.push(index);
       }
       this.isLoading = false;
-      // console.log(this.categories);
     });
-
-    // this.quizService.getCategories().subscribe((res) => {
-    // const mapped = Object.values(res);
-    // this.categories.push(mapped);
-    // this.categories = mapped;
-    // console.log(this.categories);
-
-    // for (const [key, value] of Object.entries(res)) {
-    //   console.log(`${key}: ${value}`);
-    // }
-    // });
   }
 
   editQuestion(e: any): void {
-    // console.log(e);
     this.questions = Object.values(e.value);
     this.currEditedCategory = e.name;
-    // this.isEditing = true;
     this.questionNr = 0;
     this.loadQuestion();
-    // console.log(this.questions[0]);
   }
 
   loadQuestion() {
-    // this.question = ;
-
     this.name.setValue(this.currEditedCategory);
     this.time.setValue(this.questions[0].time);
     this.question.setValue(this.questions[this.questionNr].question);
@@ -87,9 +66,6 @@ export class AdminCategoriesComponent implements OnInit {
       this.correctAnswer = 3;
     if (this.questions[this.questionNr].options[3].isCorrect === true)
       this.correctAnswer = 4;
-
-    // console.log(this.question.value);
-    // console.log(this.questions[this.questionNr]);
   }
 
   cleanQuestions() {
@@ -105,7 +81,6 @@ export class AdminCategoriesComponent implements OnInit {
 
   // ZAKOŃCZENIE EDYCJI KATEGORII I WYSŁANIE DO BAZY DANYCH
   finishQuizHandler(): void {
-    // console.log(this.questions);
     this.saveQuestionHandler();
     this.quizService.updateCategories(this.currEditedCategory, this.questions);
     this.currEditedCategory = '';
@@ -135,8 +110,6 @@ export class AdminCategoriesComponent implements OnInit {
 
   // ZAPISANIE PYTANIA DO ZMIENNEJ
   saveQuestionHandler(): void {
-    console.log(this.questions);
-    console.log(this.radio1.enabled);
     this.currEditedCategory = this.name.value as string;
     this.questions[this.questionNr] = {
       options: [
@@ -161,25 +134,16 @@ export class AdminCategoriesComponent implements OnInit {
       time: this.time.value,
       questionId: this.questionNr + 1,
     };
-    // this.questions
-    // this.question
-    // this.answer1
-    console.log(this.questions);
   }
 
   // UTWORZENIE NOWEGO QUIZU
   createNewQuizHandler(): void {
     this.cleanQuestions();
-    // this.isAddingNew = true;
     this.currEditedCategory = 'Nowy Quiz';
     this.name.setValue('Nowy Quiz');
     this.time.setValue(60);
     this.questionNr = 0;
     this.questions = [];
-    // this.addNewQuestionHandler();
-    console.log(this.currEditedCategory);
-    // console.log(this.questions);
-    // this.loadQuestion();
   }
 
   // DODANIE NOWEGO PYTANIA
@@ -211,22 +175,18 @@ export class AdminCategoriesComponent implements OnInit {
     this.questions.push(QUESTION_DEFAULT);
     this.questionNr = this.questions.length - 1;
     this.loadQuestion();
-    console.log(this.questions);
   }
 
   deleteQuestion() {
-    console.log(this.questions);
     const index = 1;
     const A = this.questions.slice(0, index);
     const B = this.questions.slice(index + 1);
     const C = A.concat(B);
 
     const newQuestionsList = this.questions.slice(2, 4);
-    console.log(C);
   }
 
   deleteCategory(e: any) {
-    // console.log(e.name);
     this.quizService.deleteCategories(e.name);
   }
 }

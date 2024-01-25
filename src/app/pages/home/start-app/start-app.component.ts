@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 
 @Component({
@@ -21,9 +20,7 @@ export class StartAppComponent implements OnInit {
     this.isLoading = true;
     this.quizService.getCategories().subscribe((res) => {
       for (const [index, value] of Object.entries(res)) {
-        // console.log(res);
         this.categories.push({ name: index, value: value });
-        // this.categoriesName.push(index);
       }
       this.isLoading = false;
     });
@@ -35,7 +32,6 @@ export class StartAppComponent implements OnInit {
   error: string = '';
 
   setQuizStart() {
-    // console.warn(this.name.value);
     if (this.name.value === '') {
       this.error = 'Nie wprowadzono nazwy użytkownika!';
       return;
@@ -52,9 +48,7 @@ export class StartAppComponent implements OnInit {
   selectCategory(event: any) {
     const selectedCategory: string = event.target.innerText;
     const selectedCategoryId: string = event.target.id;
-    console.log(selectedCategoryId);
     this.category = selectedCategory;
     this.setCategoryEvent.emit(selectedCategoryId);
-    // console.log(event.target);
   }
 }

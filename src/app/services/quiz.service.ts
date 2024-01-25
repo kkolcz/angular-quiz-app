@@ -39,27 +39,24 @@ export class QuizService {
   }
 
   updateCategories(category: string, newData: any) {
-    console.log(category);
     this.http
       .put(`${this.API_URL}/questions/${category}.json`, newData)
       .subscribe((res) => {
-        console.log(res);
+        return res;
       });
   }
 
   deleteCategories(category: string) {
     const a = `${this.API_URL}/questions/${category}.json`;
-    console.log(a);
     this.http.delete(a).subscribe((res) => {
-      console.log(res);
+      return res;
     });
   }
 
   deleteResult(uid: string) {
     const a = `${this.API_URL}/results/${uid}.json`;
-    console.log(a);
     this.http.delete(a).subscribe((res) => {
-      console.log(res);
+      return res;
     });
   }
 }

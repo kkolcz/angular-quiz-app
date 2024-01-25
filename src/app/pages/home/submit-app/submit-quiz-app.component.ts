@@ -7,14 +7,12 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class SubmitQuizAppComponent {
   @Output() restartQuizEvent = new EventEmitter<string>();
-  // points: number = 0;
   notification: string = '';
 
   @Input() points: number = 0;
   @Input() username: string = 'unknown';
 
   restartQuiz() {
-    // console.log('restart');
     this.restartQuizEvent.emit();
   }
 }
