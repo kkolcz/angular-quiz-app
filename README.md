@@ -16,6 +16,14 @@ cd angular-quiz-app
 npm install
 ```
 
+### Configure
+
+Application uses Google Firebase (Authentication and Realtime Database).
+
+The configuration file is located in `src/app/environments/enviroments.ts`.
+
+Example database to import in `example_database.json` file.
+
 ### Development server
 
 Run `ng serve`.
