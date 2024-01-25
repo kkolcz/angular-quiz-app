@@ -12,15 +12,23 @@ import { authGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  // { path: 'login', component: LoginComponent },
-  // {
-  //   path: 'admin',
-  //   component: AdminComponent,
-  //   children: [
-  //     { path: 'categories', component: AdminCategoriesComponent, canActivate: [authGuard] },
-  //     { path: 'results', component: AdminResultsComponent, canActivate: [authGuard] },
-  //   ],
-  // },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    children: [
+      {
+        path: 'categories',
+        component: AdminCategoriesComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'results',
+        component: AdminResultsComponent,
+        canActivate: [authGuard],
+      },
+    ],
+  },
   { path: '**', component: PageNotFoundComponent },
 ];
 
