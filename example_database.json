@@ -1,0 +1,645 @@
+{
+  "questions": {
+    "Biologia": [
+      {
+        "options": [
+          {
+            "answer": "Wszystkie kręgowce",
+            "isCorrect": false
+          },
+          {
+            "answer": "Tylko ssaki",
+            "isCorrect": false
+          },
+          {
+            "answer": "Ssaki i ptaki",
+            "isCorrect": true
+          },
+          {
+            "answer": " Ryby, gady i ptaki",
+            "isCorrect": false
+          }
+        ],
+        "question": "Które zwierzęta są stałocieplne?",
+        "questionId": 1,
+        "time": 360
+      },
+      {
+        "options": [
+          {
+            "answer": "krwinki czerwone",
+            "isCorrect": true
+          },
+          {
+            "answer": "bakterie jelitowe",
+            "isCorrect": false
+          },
+          {
+            "answer": "zarodniki grzybów",
+            "isCorrect": false
+          },
+          {
+            "answer": "krwinki białe",
+            "isCorrect": false
+          }
+        ],
+        "question": "Erytrocyty to:",
+        "questionId": 2,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "Kora wzrokowa - część mózgu odpowiedzialna za widzenie",
+            "isCorrect": false
+          },
+          {
+            "answer": "Samozapylanie u roślin okrytonasiennych",
+            "isCorrect": false
+          },
+          {
+            "answer": " Dorosła postać owada",
+            "isCorrect": true
+          },
+          {
+            "answer": " Dorosła postać ssaka",
+            "isCorrect": false
+          }
+        ],
+        "question": "Co to jest imago?",
+        "questionId": 3,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "Witaminy A",
+            "isCorrect": false
+          },
+          {
+            "answer": "Witaminy B",
+            "isCorrect": false
+          },
+          {
+            "answer": "Witaminy C",
+            "isCorrect": true
+          },
+          {
+            "answer": "Witaminy D",
+            "isCorrect": false
+          }
+        ],
+        "question": "Niedobór której witaminy powoduje szkorbut, obniża odporność organizmu i osłabia naczynia krwionośne?",
+        "questionId": 4,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "trzustka",
+            "isCorrect": false
+          },
+          {
+            "answer": "ślinianki",
+            "isCorrect": false
+          },
+          {
+            "answer": " grasica",
+            "isCorrect": true
+          },
+          {
+            "answer": "dwunastnica",
+            "isCorrect": false
+          }
+        ],
+        "question": "Częścią układu pokarmowego człowieka nie jest:",
+        "questionId": 5,
+        "time": 60
+      }
+    ],
+    "Chemia": [
+      {
+        "options": [
+          {
+            "answer": "zasadą",
+            "isCorrect": true
+          },
+          {
+            "answer": "kwasem",
+            "isCorrect": false
+          },
+          {
+            "answer": "izotopem",
+            "isCorrect": false
+          },
+          {
+            "answer": "mieszaniną",
+            "isCorrect": false
+          }
+        ],
+        "question": "Substancja mająca pH równe 9 jest:",
+        "questionId": 1,
+        "time": 360
+      },
+      {
+        "options": [
+          {
+            "answer": "Słodzenie herbaty",
+            "isCorrect": false
+          },
+          {
+            "answer": "Fermentacja wina",
+            "isCorrect": true
+          },
+          {
+            "answer": "Wybuch bomby wodorowej",
+            "isCorrect": false
+          },
+          {
+            "answer": "Topienie się śniegu",
+            "isCorrect": false
+          }
+        ],
+        "question": "Który z tych procesów jest przede wszystkim reakcją chemiczną?",
+        "questionId": 2,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "rozpuszczaniu",
+            "isCorrect": false
+          },
+          {
+            "answer": "topnieniu",
+            "isCorrect": true
+          },
+          {
+            "answer": "polimeryzacji",
+            "isCorrect": false
+          },
+          {
+            "answer": "sublimacji",
+            "isCorrect": false
+          }
+        ],
+        "question": "Podczas lutowania cyna ulega:",
+        "questionId": 3,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "chloru",
+            "isCorrect": false
+          },
+          {
+            "answer": "potasu",
+            "isCorrect": false
+          },
+          {
+            "answer": "fosforu",
+            "isCorrect": true
+          },
+          {
+            "answer": "polonu",
+            "isCorrect": false
+          }
+        ],
+        "question": "P to symbol chemiczny",
+        "questionId": 4,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "zielonkawy gaz",
+            "isCorrect": false
+          },
+          {
+            "answer": "srebrzysty metal",
+            "isCorrect": true
+          },
+          {
+            "answer": "gęsta, brązowa ciecz",
+            "isCorrect": false
+          },
+          {
+            "answer": "kobal nie występuje w temperaturze pokojowej",
+            "isCorrect": false
+          }
+        ],
+        "question": "Kobalt to w temperaturze pokojowej:",
+        "questionId": 5,
+        "time": 60
+      }
+    ],
+    "Geografia": [
+      {
+        "options": [
+          {
+            "answer": "Europa",
+            "isCorrect": false
+          },
+          {
+            "answer": "Azja",
+            "isCorrect": true
+          },
+          {
+            "answer": "Afryka",
+            "isCorrect": false
+          },
+          {
+            "answer": "Antarktyda",
+            "isCorrect": false
+          }
+        ],
+        "question": "Największy kontynent na Ziemi?",
+        "questionId": 1,
+        "time": 500
+      },
+      {
+        "options": [
+          {
+            "answer": "Aconcagua",
+            "isCorrect": false
+          },
+          {
+            "answer": "Kilimandżaro",
+            "isCorrect": false
+          },
+          {
+            "answer": "Mount Everest",
+            "isCorrect": true
+          },
+          {
+            "answer": "Aconcagua",
+            "isCorrect": false
+          }
+        ],
+        "question": "Najwyższa góra na ziemi to:",
+        "questionId": 2,
+        "time": 500
+      },
+      {
+        "options": [
+          {
+            "answer": "Szwecja",
+            "isCorrect": true
+          },
+          {
+            "answer": "Norwegia",
+            "isCorrect": false
+          },
+          {
+            "answer": "Wielka Brytania",
+            "isCorrect": false
+          },
+          {
+            "answer": "Islandia",
+            "isCorrect": false
+          }
+        ],
+        "question": "Które państwo ma największą liczbę wysp na świecie?",
+        "questionId": 3,
+        "time": 500
+      },
+      {
+        "options": [
+          {
+            "answer": "Francja",
+            "isCorrect": true
+          },
+          {
+            "answer": "Polska",
+            "isCorrect": false
+          },
+          {
+            "answer": "Niemcy",
+            "isCorrect": false
+          },
+          {
+            "answer": "Włochy",
+            "isCorrect": false
+          }
+        ],
+        "question": "Które państwo ma najwięcej stref czasowych?",
+        "questionId": 4,
+        "time": 500
+      },
+      {
+        "options": [
+          {
+            "answer": "Gobi",
+            "isCorrect": false
+          },
+          {
+            "answer": "Atakama",
+            "isCorrect": false
+          },
+          {
+            "answer": "Wielka Pustynia Piaszczysta",
+            "isCorrect": false
+          },
+          {
+            "answer": "Sahara",
+            "isCorrect": true
+          }
+        ],
+        "question": "Jak nazywa się największa pustynia na Ziemi?",
+        "questionId": 5,
+        "time": 60
+      }
+    ],
+    "Jedzenie": [
+      {
+        "options": [
+          {
+            "answer": "Ramen",
+            "isCorrect": false
+          },
+          {
+            "answer": "Miso",
+            "isCorrect": true
+          },
+          {
+            "answer": "Mandu-guk",
+            "isCorrect": false
+          },
+          {
+            "answer": "Udon",
+            "isCorrect": false
+          }
+        ],
+        "question": "Jak nazywa się tradycyjna japońska zupa na bazie pasty sojowej?",
+        "questionId": 1,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "Tacos",
+            "isCorrect": false
+          },
+          {
+            "answer": "Spaghetti Bolognese",
+            "isCorrect": true
+          },
+          {
+            "answer": "Pierogi",
+            "isCorrect": false
+          },
+          {
+            "answer": "Bigos",
+            "isCorrect": false
+          }
+        ],
+        "question": "Które danie jest uważane za narodowe danie Włoch?",
+        "questionId": 2,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "Potrawa z kiszonej kapusty z dodatkiem przypraw",
+            "isCorrect": true
+          },
+          {
+            "answer": "Makaron z sosem",
+            "isCorrect": false
+          },
+          {
+            "answer": "Danie ze smażonego mięsa wołowego",
+            "isCorrect": false
+          },
+          {
+            "answer": "Tradycyjna włoska pizza",
+            "isCorrect": false
+          }
+        ],
+        "question": "Co to jest \"kimchi\"?",
+        "questionId": 3,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "Japońska odmiana ziemniaków",
+            "isCorrect": false
+          },
+          {
+            "answer": "Warzywna pasta",
+            "isCorrect": false
+          },
+          {
+            "answer": "Surowe plastry ryb lub mięsa",
+            "isCorrect": true
+          },
+          {
+            "answer": "Tradycyjny napój alkoholowy",
+            "isCorrect": false
+          }
+        ],
+        "question": "Co to jest \"sashimi\" w kuchni japońskiej?",
+        "questionId": 4,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "Tradycyjna wietnamska zupa",
+            "isCorrect": true
+          },
+          {
+            "answer": "Grillowane mięso",
+            "isCorrect": false
+          },
+          {
+            "answer": "Suszone przekąski mięsne",
+            "isCorrect": false
+          },
+          {
+            "answer": "Wafle ryżowe",
+            "isCorrect": false
+          }
+        ],
+        "question": "Co to jest \"pho\" w kuchni wietnamskiej?",
+        "questionId": 5,
+        "time": 60
+      }
+    ],
+    "Zwierzęta": [
+      {
+        "options": [
+          {
+            "answer": "Pingwin białobrewy",
+            "isCorrect": false
+          },
+          {
+            "answer": "Pingwin adeli",
+            "isCorrect": false
+          },
+          {
+            "answer": "Pingwin królewski",
+            "isCorrect": false
+          },
+          {
+            "answer": "Pingwin cesarski",
+            "isCorrect": true
+          }
+        ],
+        "question": "Największy gatunek pingwina to",
+        "questionId": 1,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "Urson amerykański",
+            "isCorrect": false
+          },
+          {
+            "answer": "Bóbr kanadyjski",
+            "isCorrect": false
+          },
+          {
+            "answer": "Kapibara wielka",
+            "isCorrect": true
+          },
+          {
+            "answer": "Paka nizinna",
+            "isCorrect": false
+          }
+        ],
+        "question": "Największy gryzoń świata to",
+        "questionId": 2,
+        "time": 60
+      },
+      {
+        "options": [
+          {
+            "answer": "Australii",
+            "isCorrect": false
+          },
+          {
+            "answer": "Euroazji",
+            "isCorrect": false
+          },
+          {
+            "answer": "Ameryce Południowej",
+            "isCorrect": true
+          },
+          {
+            "answer": "Afryce",
+            "isCorrect": false
+          }
+        ],
+        "question": "Największy ptasznik świata żyje w",
+        "questionId": 3,
+        "time": 30
+      },
+      {
+        "options": [
+          {
+            "answer": "Niedźwiedź kodiacki",
+            "isCorrect": false
+          },
+          {
+            "answer": "Niedźwiedź polarny",
+            "isCorrect": true
+          },
+          {
+            "answer": "Niedźwiedź grizzly",
+            "isCorrect": false
+          },
+          {
+            "answer": "Niedźwiedź malajski",
+            "isCorrect": false
+          }
+        ],
+        "question": "Największy niedźwiedź świata",
+        "questionId": 4,
+        "time": 30
+      },
+      {
+        "options": [
+          {
+            "answer": "Wydra morska",
+            "isCorrect": false
+          },
+          {
+            "answer": "Arirania amazońska",
+            "isCorrect": true
+          },
+          {
+            "answer": "Wydra europejska",
+            "isCorrect": false
+          },
+          {
+            "answer": "Wyderka orientalna",
+            "isCorrect": false
+          }
+        ],
+        "question": "Największa wydra świata to",
+        "questionId": 5,
+        "time": 30
+      }
+    ]
+  },
+  "results": {
+    "-NoyPkIe7UDiHFmPWxxo": {
+      "category": "Biologia(started)",
+      "datetime": "25.01.2024, 03:20:16",
+      "maxPoints": 0,
+      "points": 0,
+      "solvedInSeconds": 0,
+      "totalQuizTime": 0,
+      "username": "Mikołaj"
+    },
+    "-NoyPqasWLzuhwGtni8J": {
+      "category": "Biologia",
+      "datetime": "25.01.2024, 03:20:42",
+      "maxPoints": 5,
+      "points": 3,
+      "solvedInSeconds": 25,
+      "totalQuizTime": 300,
+      "username": "Mikołaj"
+    },
+    "-NoyPtNQFl2_wuL17T62": {
+      "category": "Zwierzęta(started)",
+      "datetime": "25.01.2024, 03:20:54",
+      "maxPoints": 0,
+      "points": 0,
+      "solvedInSeconds": 0,
+      "totalQuizTime": 0,
+      "username": "Andrzej"
+    },
+    "-NoyPwkvAGkiwGJAXF8z": {
+      "category": "Zwierzęta",
+      "datetime": "25.01.2024, 03:21:07",
+      "maxPoints": 5,
+      "points": 3,
+      "solvedInSeconds": 13,
+      "totalQuizTime": 300,
+      "username": "Andrzej"
+    },
+    "-NoyQ2CV9jULvw6wFl2B": {
+      "category": "Geografia(started)",
+      "datetime": "25.01.2024, 03:21:34",
+      "maxPoints": 0,
+      "points": 0,
+      "solvedInSeconds": 0,
+      "totalQuizTime": 0,
+      "username": "Łukasz"
+    },
+    "-NoyQ7uqu0EuSMK29I7N": {
+      "category": "Geografia",
+      "datetime": "25.01.2024, 03:21:57",
+      "maxPoints": 5,
+      "points": 2,
+      "solvedInSeconds": 23,
+      "totalQuizTime": 300,
+      "username": "Łukasz"
+    }
+  }
+}

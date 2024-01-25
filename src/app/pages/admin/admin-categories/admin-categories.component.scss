@@ -33,3 +33,55 @@
 .btn {
   margin: 25px 5px;
 }
+
+.formInput {
+  display: flex;
+}
+
+.labels {
+}
+
+.inputs {
+}
+
+.radios {
+}
+
+.labels,
+.inputs,
+.radios {
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  width: 100%;
+}
+
+table tbody tr td:nth-child(2) {
+}
+
+table tbody tr:nth-child(2) td {
+  // margin: 50px;
+  // padding-top: 10px;
+  padding-bottom: 10px;
+  // height: 50px;
+  // background-color: red;
+}
+
+table tbody tr:nth-child(2) {
+  // height: 40px;
+}
+
+table tbody tr td label {
+  // margin-right: 25px;
+}
+
+.inputQuestion {
+  width: 100%;
+}
+
+.inputAnswer {
+  width: 90%;
+  // border: 1px solid red;
+}

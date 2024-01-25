@@ -18,6 +18,7 @@ export class AdminCategoriesComponent implements OnInit {
   // isAddingNew = false;
 
   name = new FormControl('');
+  time = new FormControl();
   question = new FormControl('');
   answer1 = new FormControl('');
   answer2 = new FormControl('');
@@ -71,6 +72,7 @@ export class AdminCategoriesComponent implements OnInit {
     // this.question = ;
 
     this.name.setValue(this.currEditedCategory);
+    this.time.setValue(this.questions[0].time);
     this.question.setValue(this.questions[this.questionNr].question);
     this.answer1.setValue(this.questions[this.questionNr].options[0].answer);
     this.answer2.setValue(this.questions[this.questionNr].options[1].answer);
@@ -92,6 +94,7 @@ export class AdminCategoriesComponent implements OnInit {
 
   cleanQuestions() {
     this.name.setValue('');
+    this.time.setValue(60);
     this.question.setValue('');
     this.answer1.setValue('');
     this.answer2.setValue('');
@@ -100,7 +103,7 @@ export class AdminCategoriesComponent implements OnInit {
     this.questionNr = 0;
   }
 
-  // ZAKOŃCZENIE EDYCJI KATEGORII
+  // ZAKOŃCZENIE EDYCJI KATEGORII I WYSŁANIE DO BAZY DANYCH
   finishQuizHandler(): void {
     // console.log(this.questions);
     this.saveQuestionHandler();
@@ -155,11 +158,13 @@ export class AdminCategoriesComponent implements OnInit {
         },
       ],
       question: this.question.value,
+      time: this.time.value,
       questionId: this.questionNr + 1,
     };
     // this.questions
     // this.question
     // this.answer1
+    console.log(this.questions);
   }
 
   // UTWORZENIE NOWEGO QUIZU
@@ -168,6 +173,7 @@ export class AdminCategoriesComponent implements OnInit {
     // this.isAddingNew = true;
     this.currEditedCategory = 'Nowy Quiz';
     this.name.setValue('Nowy Quiz');
+    this.time.setValue(60);
     this.questionNr = 0;
     this.questions = [];
     // this.addNewQuestionHandler();
