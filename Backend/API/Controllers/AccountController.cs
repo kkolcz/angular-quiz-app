@@ -1,4 +1,6 @@
 using System;
+using System.Security.Cryptography;
+using System.Text;
 using API.Data;
 using API.DTOs;
 using API.Entities;
@@ -20,13 +22,22 @@ public class AccountController(DataContext context) : BaseApiController
             return BadRequest("Invalid request");
         }
 
+        if (await context.Users.AnyAsync(x => x.Username == registerDto.Username))
+        {
+            return BadRequest("Username is taken");
+        }
+
+        using var hmac = new HMACSHA512();
+
         var user = new AppUser
         {
-            Username = registerDto.Username,
-            Password = registerDto.Password
+            Username = registerDto.Username.ToLower(),
+            PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+            PasswordSalt = hmac.Key,
         };
 
         context.Users.Add(user);
+        await context.SaveChangesAsync();
 
         return Ok("Register successful");
     }
@@ -46,15 +57,21 @@ public class AccountController(DataContext context) : BaseApiController
             return Unauthorized("Invalid username");
         }
 
-        if (user.Password != loginDto.Password)
+        using var hmac = new HMACSHA512(user.PasswordSalt);
+        var comutedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDto.Password));
+
+        for (int i = 0; i < comutedHash.Length; i++)
         {
-            return Unauthorized("Invalid password");
+            if (comutedHash[i] != user.PasswordHash[i])
+            {
+                return Unauthorized("Invalid password");
+            }
         }
 
         var returnUser = new UserDto
         {
             Username = user.Username,
-            Password = user.Password
+            Token = "token"
         };
 
         return Ok(returnUser);

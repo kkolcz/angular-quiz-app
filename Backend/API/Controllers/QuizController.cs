@@ -27,12 +27,93 @@ public class QuizController(DataContext context) : BaseApiController
         return Ok("Add quiz successful");
     }
 
-    [HttpGet("getAllQuiz")]
+    [HttpGet("getAllQuizzes")]
     public async Task<ActionResult<IEnumerable<Quiz>>> GetAllQuiz()
     {
-        var quizzes = await context.Quizzes.Include(x => x.Questions).ToListAsync();
+        var quizzes = await context.Quizzes
+        .Include(x => x.Questions)
+        .Select(q => new ReturnQuizDto
+        {
+            Id = q.Id,
+            Title = q.Title,
+            Description = q.Description,
+            Category = q.Category,
+            Questions = q.Questions.Select(question => new QuestionDto
+            {
+                Id = question.Id,
+                Title = question.Title,
+                Option1 = question.Option1,
+                Option2 = question.Option2,
+                Option3 = question.Option3,
+                Option4 = question.Option4,
+                QuizId = question.QuizId
+            }).ToList()
+        })
+        .ToListAsync();
 
 
         return Ok(quizzes);
+    }
+
+    [HttpGet("getAvaliableQuizzes")]
+    public async Task<ActionResult<IEnumerable<Quiz>>> GetAvaliableQuiz()
+    {
+        var quizzes = await context.Quizzes.Select(q => new { q.Id, q.Title }).ToListAsync();
+
+        return Ok(quizzes);
+    }
+
+    [HttpGet("getQuiz/{id}")]
+    public async Task<ActionResult<Quiz>> GetQuiz(int id)
+    {
+        var quiz = await context.Quizzes
+        .Include(x => x.Questions)
+        .Select(q => new ReturnQuizDto
+        {
+            Id = q.Id,
+            Title = q.Title,
+            Description = q.Description,
+            Category = q.Category,
+            Questions = q.Questions.Select(question => new QuestionDto
+            {
+                Id = question.Id,
+                Title = question.Title,
+                Option1 = question.Option1,
+                Option2 = question.Option2,
+                Option3 = question.Option3,
+                Option4 = question.Option4,
+                QuizId = question.QuizId
+            }).ToList()
+        })
+        .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (quiz == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(quiz);
+    }
+
+    [HttpDelete("deleteQuiz/{id}")]
+    public async Task<ActionResult> DeleteQuiz(int id)
+    {
+        var quiz = await context.Quizzes.FirstOrDefaultAsync(x => x.Id == id);
+
+        if (quiz == null)
+        {
+            return NotFound();
+        }
+
+        context.Quizzes.Remove(quiz);
+        await context.SaveChangesAsync();
+
+        return Ok("Delete quiz successful");
+    }
+
+    [HttpPost("sendAnswers")]
+    public async Task<ActionResult> SendAnswers(List<AnswerDto> AnswerDto)
+    {
+        return Ok("Send answers successful");
     }
 }
