@@ -125,6 +125,63 @@ public class RunningQuizController(DataContext context) : BaseApiController
 
         return Ok("Send answer successful");
     }
+
+    [HttpGet("getResults/{id}")]
+    public async Task<ActionResult> GetResults(int id)
+    {
+        var quiz = await context.RunningQuiz
+            .Include(x => x.Answers)
+            .Include(x => x.Quiz)
+            .ThenInclude(q => q.Questions)
+            .FirstOrDefaultAsync(x => x.Id == id);
+
+        if (quiz == null)
+        {
+            return BadRequest("Quiz not found");
+        }
+
+        if (quiz.EndTime == null)
+        {
+            return BadRequest("Quiz not ended");
+        }
+
+        var correctAnswers = 0;
+        var wrongAnswers = 0;
+
+        foreach (var answer in quiz.Answers)
+        {
+            var question = quiz.Quiz.Questions.FirstOrDefault(x => x.Id == answer.QuestionId);
+
+            if (question.Answer == answer.Content)
+            {
+                correctAnswers++;
+            }
+            else
+            {
+                wrongAnswers++;
+            }
+        }
+
+        var response = new ResultsDto
+        {
+            QuizId = quiz.QuizId,
+            RunningQuizId = quiz.Id,
+            CorrectAnswers = correctAnswers,
+            WrongAnswers = wrongAnswers,
+            TotalQuestions = quiz.Quiz.Questions.Count
+        };
+
+        return Ok(response);
+    }
+}
+
+internal class ResultsDto
+{
+    public int QuizId { get; set; }
+    public int RunningQuizId { get; set; }
+    public int CorrectAnswers { get; set; }
+    public int WrongAnswers { get; set; }
+    public int TotalQuestions { get; set; }
 }
 
 internal class StartQuizResponseDto
