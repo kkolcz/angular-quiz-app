@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240906122633_AddTableQuizzes")]
+    partial class AddTableQuizzes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -102,13 +105,13 @@ namespace API.Data.Migrations
             modelBuilder.Entity("API.Entities.Question", b =>
                 {
                     b.HasOne("API.Entities.Quiz", null)
-                        .WithMany("Questions")
+                        .WithMany("Quqestions")
                         .HasForeignKey("QuizId");
                 });
 
             modelBuilder.Entity("API.Entities.Quiz", b =>
                 {
-                    b.Navigation("Questions");
+                    b.Navigation("Quqestions");
                 });
 #pragma warning restore 612, 618
         }
