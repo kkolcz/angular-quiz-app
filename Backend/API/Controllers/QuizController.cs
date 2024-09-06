@@ -110,10 +110,4 @@ public class QuizController(DataContext context) : BaseApiController
 
         return Ok("Delete quiz successful");
     }
-
-    [HttpPost("sendAnswers")]
-    public async Task<ActionResult> SendAnswers(List<AnswerDto> AnswerDto)
-    {
-        return Ok("Send answers successful");
-    }
 }

@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240906174627_runingQuizAndAnswer")]
+    partial class runingQuizAndAnswer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.8");
@@ -30,14 +33,12 @@ namespace API.Data.Migrations
                     b.Property<int>("QuestionId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("RunningQuizId")
+                    b.Property<int>("RunningQuizId")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("RunningQuizId");
-
-                    b.ToTable("Answer");
+                    b.ToTable("Answers");
                 });
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
@@ -148,13 +149,6 @@ namespace API.Data.Migrations
                     b.ToTable("RunningQuiz");
                 });
 
-            modelBuilder.Entity("API.Entities.Answer", b =>
-                {
-                    b.HasOne("API.Entities.RunningQuiz", null)
-                        .WithMany("Answers")
-                        .HasForeignKey("RunningQuizId");
-                });
-
             modelBuilder.Entity("API.Entities.Question", b =>
                 {
                     b.HasOne("API.Entities.Quiz", null)
@@ -167,11 +161,6 @@ namespace API.Data.Migrations
             modelBuilder.Entity("API.Entities.Quiz", b =>
                 {
                     b.Navigation("Questions");
-                });
-
-            modelBuilder.Entity("API.Entities.RunningQuiz", b =>
-                {
-                    b.Navigation("Answers");
                 });
 #pragma warning restore 612, 618
         }
