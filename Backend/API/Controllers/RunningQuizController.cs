@@ -74,8 +74,8 @@ public class RunningQuizController(DataContext context) : BaseApiController
         quiz.EndTime = DateTime.Now;
         await context.SaveChangesAsync();
 
-        // return Ok("Stop quiz successful");
-        return Ok(quiz);
+        return Ok("Stop quiz successful");
+        // return Ok(quiz);
     }
 
     [HttpPost("sendAnswer/{id}")]
@@ -83,13 +83,18 @@ public class RunningQuizController(DataContext context) : BaseApiController
     {
         var quiz = await context.RunningQuiz
             .Include(x => x.Answers)
-            .Include(x => x.Quiz) // Zakładając, że masz właściwość nawigacyjną do Quiz
-            .ThenInclude(q => q.Questions) // Wczytywanie powiązanych pytań
+            .Include(x => x.Quiz)
+            .ThenInclude(q => q.Questions)
             .FirstOrDefaultAsync(x => x.Id == id);
 
         if (quiz == null)
         {
             return BadRequest("Quiz not found");
+        }
+
+        if (quiz.EndTime != null)
+        {
+            return BadRequest("Quiz already ended");
         }
 
         if (quiz.Answers.Any(x => x.QuestionId == sendAnswersDto.QuestionId))
