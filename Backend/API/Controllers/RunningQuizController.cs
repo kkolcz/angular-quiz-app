@@ -62,9 +62,15 @@ public class RunningQuizController(DataContext context) : BaseApiController
     [HttpPost("stopQuiz/{id}")]
     public async Task<ActionResult> StopQuiz(int id)
     {
+        // var quiz = await context.RunningQuiz
+        // .Include(x => x.Answers)
+        // .FirstOrDefaultAsync(x => x.Id == id);
+
         var quiz = await context.RunningQuiz
-        .Include(x => x.Answers)
-        .FirstOrDefaultAsync(x => x.Id == id);
+    .Include(x => x.Answers)
+    .Include(x => x.Quiz)
+    .ThenInclude(q => q.Questions)
+    .FirstOrDefaultAsync(x => x.Id == id);
 
         if (quiz == null)
         {
@@ -74,7 +80,37 @@ public class RunningQuizController(DataContext context) : BaseApiController
         quiz.EndTime = DateTime.Now;
         await context.SaveChangesAsync();
 
-        return Ok("Stop quiz successful");
+
+        var correctAnswers = 0;
+        var wrongAnswers = 0;
+
+        foreach (var answer in quiz.Answers)
+        {
+            var question = quiz.Quiz.Questions.FirstOrDefault(x => x.Id == answer.QuestionId);
+
+            if (question.Answer == answer.Content)
+            {
+                correctAnswers++;
+            }
+            else
+            {
+                wrongAnswers++;
+            }
+        }
+
+        var response = new ResultsDto
+        {
+            Message = "Stop quiz successful",
+            QuizId = quiz.QuizId,
+            RunningQuizId = quiz.Id,
+            CorrectAnswers = correctAnswers,
+            WrongAnswers = wrongAnswers,
+            TotalQuestions = quiz.Quiz.Questions.Count
+        };
+
+
+
+        return Ok(response);
         // return Ok(quiz);
     }
 
@@ -177,6 +213,7 @@ public class RunningQuizController(DataContext context) : BaseApiController
 
 internal class ResultsDto
 {
+    public string Message { get; internal set; }
     public int QuizId { get; set; }
     public int RunningQuizId { get; set; }
     public int CorrectAnswers { get; set; }
