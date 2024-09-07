@@ -16,16 +16,34 @@ export class AdminComponent {
   ) {}
 
   isLoggedIn(): boolean {
-    return this.authService.isLoggedIn;
+    if (this.authService.authUser) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   signIn(login: string, password: string): void {
-    this.authService.signIn(login, password);
+    this.authService.signIn(login, password).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: (err) => {
+        alert('Błąd logowania!');
+      },
+    });
   }
 
   signUp(login: string, password: string): void {
     if (environment.enable_admin_register) {
-      this.authService.signUp(login, password);
+      this.authService.signUp(login, password).subscribe({
+        next: (res) => {
+          console.log(res);
+        },
+        error: (err) => {
+          alert('Błąd rejestracji!');
+        },
+      });
     } else {
       alert('Rejestracja wyłączona!');
     }

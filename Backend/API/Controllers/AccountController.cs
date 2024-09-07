@@ -39,7 +39,7 @@ public class AccountController(DataContext context, ITokenService tokenService) 
         context.Users.Add(user);
         await context.SaveChangesAsync();
 
-        return Ok("Register successful");
+        return Ok(new { message = "Register successful" });
     }
 
     [HttpPost("login")]
