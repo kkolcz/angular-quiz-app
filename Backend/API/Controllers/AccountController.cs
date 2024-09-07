@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers;
 
-public class AccountController(DataContext context) : BaseApiController
+public class AccountController(DataContext context, ITokenService tokenService) : BaseApiController
 {
 
 
@@ -71,7 +71,7 @@ public class AccountController(DataContext context) : BaseApiController
         var returnUser = new UserDto
         {
             Username = user.Username,
-            Token = "token"
+            Token = tokenService.CreateToken(user)
         };
 
         return Ok(returnUser);
