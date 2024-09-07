@@ -159,7 +159,7 @@ public class RunningQuizController(DataContext context) : BaseApiController
         await context.SaveChangesAsync();
 
 
-        return Ok("Send answer successful");
+        return Ok(new { message = "Send answer successful" });
     }
 
     [HttpGet("getResults/{id}")]
