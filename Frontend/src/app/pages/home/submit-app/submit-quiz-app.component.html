@@ -2,7 +2,7 @@
     <h2>Gratulacje!</h2>
     <div>
         <p><b>{{username}}</b>, ukończyłeś quiz!</p>
-        <p>Wynik który uzyskałeś to: <b>{{points}}</b> punkty!</p>
+        <p>Wynik który uzyskałeś to: <b>{{endQuizData.correctAnswers}}</b> punkty!</p>
     </div>
     <p class="notification">{{notification}}</p>
     <button class="btn" (click)="restartQuiz()">Restart</button>

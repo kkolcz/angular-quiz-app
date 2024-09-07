@@ -2,6 +2,11 @@ import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
 
+interface Category {
+  id: string;
+  name: string;
+}
+
 @Component({
   selector: 'app-start-app',
   templateUrl: './start-app.component.html',
@@ -12,16 +17,15 @@ export class StartAppComponent implements OnInit {
   @Output() setUserNameEvent = new EventEmitter<string>();
   @Output() setCategoryEvent = new EventEmitter<string>();
 
-  categories: any = [];
+  categories: Category[] = [];
   isLoading: boolean = true;
   constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
     this.isLoading = true;
     this.quizService.getCategories().subscribe((res) => {
-      console.log(res);
       for (const [index, value] of Object.entries(res)) {
-        this.categories.push({ name: index, value: value });
+        this.categories.push({ name: value.title, id: value.id });
       }
       this.isLoading = false;
     });

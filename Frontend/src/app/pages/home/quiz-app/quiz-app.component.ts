@@ -3,13 +3,44 @@ import { QuizService } from '../../../services/quiz.service';
 import { Questions } from '../../../models/questions';
 import { Results } from '../../../models/results';
 
+interface IStartQuizRes {
+  message: string;
+  runningQuizId: number;
+  quiz: {
+    id: number;
+    title: string;
+    description: string;
+    category: string;
+    questions: IQuestion[];
+  };
+}
+
+interface IQuestion {
+  id: number;
+  title: string;
+  option1: string;
+  option2: string;
+  option3: string;
+  option4: string;
+  quizId: number;
+}
+
+interface IStopQuizRes {
+  message: string;
+  quizId: number;
+  runningQuizId: number;
+  correctAnswers: number;
+  wrongAnswers: number;
+  totalQuestions: number;
+}
+
 @Component({
   selector: 'app-quiz-app',
   templateUrl: './quiz-app.component.html',
   styleUrls: ['./quiz-app.component.scss'],
 })
 export class QuizAppComponent implements OnInit {
-  @Output() quizSubmitEvent = new EventEmitter<number>();
+  @Output() quizSubmitEvent = new EventEmitter<IStopQuizRes>();
   @Input() username: string = 'unknown';
   @Input() category: string = '';
 
@@ -17,19 +48,7 @@ export class QuizAppComponent implements OnInit {
   isLoading: boolean = false;
   quizIsEnded: boolean = false;
 
-  questionsList: Questions[] = [
-    {
-      questionId: -1,
-      question: '',
-      time: 60,
-      options: [
-        { answer: '', isCorrect: false },
-        { answer: '', isCorrect: false },
-        { answer: '', isCorrect: false },
-        { answer: '', isCorrect: false },
-      ],
-    },
-  ];
+  questionsList: IQuestion[] = [];
   questionNumber: number = 1;
   selectedAnswer: number = -1;
   points: number = 0;
@@ -37,11 +56,14 @@ export class QuizAppComponent implements OnInit {
   timeForQuestion = 60;
   time: number = 60;
 
+  quizId: string = '2';
+  runningQuizId: string = '1';
+
   constructor(private quizService: QuizService) {}
 
   ngOnInit(): void {
     this.loadQuestions();
-    this.sendStartQuiz(this.username, this.category);
+    // this.sendStartQuiz(this.username, this.category);
 
     const interval = setInterval(() => {
       this.time--;
@@ -51,14 +73,16 @@ export class QuizAppComponent implements OnInit {
       }
     }, 1000);
 
-    this.results = this.quizService.getResultsArray();
+    // this.results = this.quizService.getResultsArray();
   }
 
   loadQuestions() {
     this.isLoading = true;
-    this.quizService.load(this.category).subscribe((res) => {
-      this.questionsList = res as Questions[];
-      this.time = this.questionsList[0].time;
+    console.log('load');
+    this.quizService.startQuiz(this.quizId).subscribe((res: IStartQuizRes) => {
+      console.log(res);
+      this.questionsList = res.quiz.questions;
+      // this.time = this.questionsList[0].time;
       this.isLoading = false;
     });
   }
@@ -78,14 +102,26 @@ export class QuizAppComponent implements OnInit {
   }
 
   selectAnswer(answer: any) {
-    this.selectedAnswer = answer;
-    const answerIs =
-      this.questionsList[this.questionNumber - 1].options[answer].isCorrect;
-
-    if (answerIs) {
-      this.points++;
-    }
-
+    // this.selectedAnswer = answer;
+    // const answerIs =
+    //   this.questionsList[this.questionNumber - 1].options[answer].isCorrect;
+    // if (answerIs) {
+    //   this.points++;
+    // }
+    console.log('Answer:', answer);
+    // quiz_id: string, question_id: string, answer: string
+    this.quizService
+      .sendAnswer(
+        this.quizService.getRunningQuiz().runningQuizId.toString(),
+        this.questionsList[this.questionNumber - 1].id,
+        answer
+      )
+      .subscribe({
+        next: (res) => {
+          console.log('Answer sent:', res);
+        },
+        error: (err) => console.log('Error:', err),
+      });
     this.nextQuestion();
   }
 
@@ -93,29 +129,40 @@ export class QuizAppComponent implements OnInit {
     if (this.quizIsEnded === false) {
       const totalQuizTime = this.questionNumber * this.timeForQuestion;
       const solvedIn = totalQuizTime - this.time;
-      this.quizIsEnded = true;
-      this.quizSubmitEvent.emit(this.points);
+
+      console.log(this.points);
 
       // SUBMIT QUIZ
-      this.sendResult({
-        username: this.username,
-        points: this.points,
-        maxPoints: this.questionsList.length,
-        category: this.category,
-        solvedInSeconds: solvedIn,
-        totalQuizTime: totalQuizTime,
-        datetime: new Date().toLocaleString('pl-PL').toString(),
+      this.quizService.stopQuiz().subscribe((res: IStopQuizRes) => {
+        console.log('Quiz stopped:', res);
+        this.points = res.correctAnswers;
+        this.quizSubmitEvent.emit(res);
+        this.quizIsEnded = true;
       });
+
+      // this.quizService.getResultsDb().subscribe((res) => {
+      //   console.log('Results:', res);
+      // });
+
+      // this.sendResult({
+      //   username: this.username,
+      //   points: this.points,
+      //   maxPoints: this.questionsList.length,
+      //   category: this.category,
+      //   solvedInSeconds: solvedIn,
+      //   totalQuizTime: totalQuizTime,
+      //   datetime: new Date().toLocaleString('pl-PL').toString(),
+      // });
     }
   }
 
   sendResult(data: Results) {
-    this.quizService.sendResultDb(data).subscribe(
-      (res) => {},
-      (err) => {
-        console.error('Error', err);
-      }
-    );
+    // this.quizService.sendResultDb(data).subscribe(
+    //   (res) => {},
+    //   (err) => {
+    //     console.error('Error', err);
+    //   }
+    // );
   }
 
   // SEND START QUIZ
