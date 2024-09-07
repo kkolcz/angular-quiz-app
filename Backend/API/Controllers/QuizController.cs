@@ -55,6 +55,14 @@ public class QuizController(DataContext context) : BaseApiController
         return Ok(quizzes);
     }
 
+    [HttpGet("getListQuizzes")]
+    public async Task<ActionResult<IEnumerable<Quiz>>> GetListQuiz()
+    {
+        var quizzes = await context.Quizzes.Select(q => new { q.Id, q.Title, q.Category }).ToListAsync();
+
+        return Ok(quizzes);
+    }
+
     [HttpGet("getAvaliableQuizzes")]
     public async Task<ActionResult<IEnumerable<Quiz>>> GetAvaliableQuiz()
     {

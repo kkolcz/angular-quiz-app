@@ -19,6 +19,7 @@ export class StartAppComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = true;
     this.quizService.getCategories().subscribe((res) => {
+      console.log(res);
       for (const [index, value] of Object.entries(res)) {
         this.categories.push({ name: index, value: value });
       }

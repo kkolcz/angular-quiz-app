@@ -10,8 +10,8 @@ export class QuizService {
   constructor(private http: HttpClient) {}
 
   load(category: string) {
+    console.log('load');
     const apiUrl = `${this.API_URL}/questions/${category}.json`;
-
     return this.http.get(apiUrl);
   }
 
@@ -34,7 +34,7 @@ export class QuizService {
   }
 
   getCategories() {
-    const res = this.http.get(`${this.API_URL}/questions.json`);
+    const res = this.http.get(`${this.API_URL}quiz/getListQuizzes`);
     return res;
   }
 
