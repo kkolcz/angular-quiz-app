@@ -8,27 +8,23 @@ import { AdminCategoriesComponent } from './pages/admin/admin-categories/admin-c
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { LoginComponent } from './pages/login/login.component';
 import { authGuard } from './guard/auth.guard';
+import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 // import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LandingPageComponent },
+  {
+    path: 'home',
+    loadChildren: () =>
+      import('./pages/home/home.module').then((m) => m.HomeModule),
+  },
   {
     path: 'admin',
-    component: AdminComponent,
-    children: [
-      {
-        path: 'categories',
-        component: AdminCategoriesComponent,
-        canActivate: [authGuard],
-      },
-      {
-        path: 'results',
-        component: AdminResultsComponent,
-        canActivate: [authGuard],
-      },
-    ],
+    loadChildren: () =>
+      import('./pages/admin/admin.module').then((m) => m.AdminModule),
   },
+  // { path: 'login', component: LoginComponent },
+
   { path: '**', component: PageNotFoundComponent },
 ];
 

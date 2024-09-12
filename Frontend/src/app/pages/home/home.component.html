@@ -1,6 +1,5 @@
 <header></header>
 <main>
-
     <app-welcome *ngIf="showWelcome" (closeWelcomeEvent)="closeWelcome()" />
     <app-start-app *ngIf="!quizStarted && !showWelcome" (quizStartEvent)="startQuiz($event)"
         (setUserNameEvent)="setUsername($event)" (setCategoryEvent)="setCategory($event)"></app-start-app>
