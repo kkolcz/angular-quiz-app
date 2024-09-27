@@ -14,9 +14,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { LandingPageComponent } from './pages/landing-page/landing-page.component';
 import { HomeModule } from './pages/home/home.module';
-import { LayoutComponent } from './layout/layout/layout.component';
-import { FooterComponent } from './layout/footer/footer.component';
 import { LayoutModule } from './layout/layout.module';
+import { LayoutPageComponent } from './layout/layout-page/layout-page.component';
+import { LayoutQuizComponent } from './layout/layout-quiz/layout-quiz.component';
 
 @NgModule({
   declarations: [
