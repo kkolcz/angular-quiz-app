@@ -36,7 +36,8 @@ export class QuizService {
   TEMP_USER_ID = '1';
   constructor(private http: HttpClient) {}
 
-  startQuiz(runningQuizId: string) {
+  startQuiz(quizId: string) {
+    const runningQuizId = String(parseInt(quizId) - 1);
     console.log('load');
     this.runningQuiz.quizId = runningQuizId;
     const apiUrl = `${this.API_URL}RunningQuiz/startQuiz/${runningQuizId}`;
