@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+export interface ICategory {
+  id: number;
+  name: string;
+}
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,7 +12,7 @@ import { Component } from '@angular/core';
 export class HomeComponent {
   title = 'angular-quiz-app';
   username: string = 'unknown';
-  category: string = '';
+  category: ICategory;
 
   quizStarted = false;
   quizEnd = false;
@@ -33,7 +37,7 @@ export class HomeComponent {
     this.username = username;
   }
 
-  setCategory(category: string) {
+  setCategory(category: ICategory) {
     this.category = category;
   }
 

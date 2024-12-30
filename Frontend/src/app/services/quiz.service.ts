@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../environments/enviroments';
 import { tap } from 'rxjs';
+import { ICategory } from '../pages/home/home.component';
 
 interface IStopQuizRes {
   message: string;
@@ -36,9 +37,9 @@ export class QuizService {
   TEMP_USER_ID = '1';
   constructor(private http: HttpClient) {}
 
-  startQuiz(quizId: string) {
-    const runningQuizId = String(parseInt(quizId) - 1);
-    console.log('load');
+  startQuiz(category: ICategory) {
+    const runningQuizId = String(category.id);
+    console.log('Question loaded', category);
     this.runningQuiz.quizId = runningQuizId;
     const apiUrl = `${this.API_URL}RunningQuiz/startQuiz/${runningQuizId}`;
     return this.http.post(apiUrl, { userId: this.TEMP_USER_ID }).pipe(

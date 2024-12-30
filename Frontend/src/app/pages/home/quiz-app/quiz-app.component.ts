@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { QuizService } from '../../../services/quiz.service';
 import { Questions } from '../../../models/questions';
 import { Results } from '../../../models/results';
+import { ICategory } from '../home.component';
 
 interface IStartQuizRes {
   message: string;
@@ -42,7 +43,7 @@ interface IStopQuizRes {
 export class QuizAppComponent implements OnInit {
   @Output() quizSubmitEvent = new EventEmitter<IStopQuizRes>();
   @Input() username: string = 'unknown';
-  @Input() category: string = '';
+  @Input() category: ICategory;
 
   error: boolean = false;
   isLoading: boolean = false;
@@ -78,13 +79,13 @@ export class QuizAppComponent implements OnInit {
 
   loadQuestions() {
     this.isLoading = true;
-    console.log('load');
-    this.quizService.startQuiz(this.quizId).subscribe((res: IStartQuizRes) => {
-      console.log(res);
-      this.questionsList = res.quiz.questions;
-      // this.time = this.questionsList[0].time;
-      this.isLoading = false;
-    });
+    this.quizService
+      .startQuiz(this.category)
+      .subscribe((res: IStartQuizRes) => {
+        this.questionsList = res.quiz.questions;
+        // this.time = this.questionsList[0].time;
+        this.isLoading = false;
+      });
   }
 
   nextQuestion() {

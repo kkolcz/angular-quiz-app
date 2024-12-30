@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { QuizService } from '../../../services/quiz.service';
+import { ICategory } from '../home.component';
 
 interface Category {
   id: string;
@@ -15,7 +16,7 @@ interface Category {
 export class StartAppComponent implements OnInit {
   @Output() quizStartEvent = new EventEmitter<boolean>();
   @Output() setUserNameEvent = new EventEmitter<string>();
-  @Output() setCategoryEvent = new EventEmitter<string>();
+  @Output() setCategoryEvent = new EventEmitter<ICategory>();
 
   categories: Category[] = [];
   isLoading: boolean = true;
@@ -51,9 +52,16 @@ export class StartAppComponent implements OnInit {
   }
 
   selectCategory(event: any) {
-    const selectedCategory: string = event.target.innerText;
-    const selectedCategoryId: string = event.target.id;
-    this.category = selectedCategory;
-    this.setCategoryEvent.emit(selectedCategoryId);
+    // const selectedCategory: string = event.target.innerText;
+    // const selectedCategoryId: string = event.target.id;
+
+    const category: ICategory = {
+      id: event.target.id,
+      name: event.target.innerText,
+    };
+    // console.log(selectedCategory);
+    // console.log(selectedCategoryId);
+    this.category = category.name;
+    this.setCategoryEvent.emit(category);
   }
 }
