@@ -37,10 +37,10 @@ interface IStopQuizRes {
 
 @Component({
   selector: 'app-quiz-app',
-  templateUrl: './quiz-app.component.html',
-  styleUrls: ['./quiz-app.component.scss'],
+  templateUrl: './running-quiz-app.component.html',
+  styleUrls: ['./running-quiz-app.component.scss'],
 })
-export class QuizAppComponent implements OnInit {
+export class RunningQuizAppComponent implements OnInit {
   @Output() quizSubmitEvent = new EventEmitter<IStopQuizRes>();
   @Input() username: string = 'unknown';
   @Input() category: ICategory;

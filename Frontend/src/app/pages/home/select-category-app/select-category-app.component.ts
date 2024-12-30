@@ -10,10 +10,10 @@ interface Category {
 
 @Component({
   selector: 'app-start-app',
-  templateUrl: './start-app.component.html',
-  styleUrls: ['./start-app.component.scss'],
+  templateUrl: './select-category-app.component.html',
+  styleUrls: ['./select-category-app.component.scss'],
 })
-export class StartAppComponent implements OnInit {
+export class SelectCategoryAppComponent implements OnInit {
   @Output() quizStartEvent = new EventEmitter<boolean>();
   @Output() setUserNameEvent = new EventEmitter<string>();
   @Output() setCategoryEvent = new EventEmitter<ICategory>();

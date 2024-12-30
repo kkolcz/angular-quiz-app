@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -26,4 +28,19 @@
 
 .buttons {
   margin-top: 4rem;
+}
+
+.button {
+  display: inline-block;
+  margin: 20px;
+
+  a {
+    cursor: pointer;
+    background-color: $secondary-color;
+    color: #282c34;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-size: 1.2em;
+  }
 }
