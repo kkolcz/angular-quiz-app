@@ -5,7 +5,7 @@
     <div *ngIf="!isLoading" class="categories">
       <div
         *ngFor="let category of categories"
-        class="btn"
+        class="categoryButton"
         id="{{ category.id }}"
         (click)="selectCategory($event)"
       >
@@ -15,9 +15,8 @@
   </div>
 
   <div class="categoryNotification">
-    <p *ngIf="category">
-      Wybrano quiz z kategorii: <b>{{ category }}</b>
-    </p>
+    <p *ngIf="category">Wybrano quiz z kategorii:</p>
+    <p>{{ category }}</p>
   </div>
 
   <div class="userName">
@@ -30,8 +29,8 @@
         [formControl]="name"
         (keydown.enter)="setQuizStart()"
       />
-      <button (click)="setQuizStart()">Start</button>
     </div>
+    <div class="buttonStart" (click)="setQuizStart()">Rozpocznij</div>
   </div>
   <p class="error">{{ error }}</p>
 

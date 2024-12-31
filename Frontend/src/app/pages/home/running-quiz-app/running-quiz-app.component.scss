@@ -38,10 +38,11 @@
 }
 
 .answer:hover {
-  background-color: rgba(44, 62, 80, 0.4);
+  // background-color: rgba(44, 62, 80, 0.4);
+  background-color: #1f2329;
   scale: 1.02;
   cursor: pointer;
-  box-shadow: 8px 8px 15px -5px rgba(66, 68, 90, 1);
+  // box-shadow: 8px 8px 15px -5px rgba(66, 68, 90, 1);
   transition: all 0.3s;
 }
 

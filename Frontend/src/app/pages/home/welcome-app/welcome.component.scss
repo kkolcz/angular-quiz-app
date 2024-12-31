@@ -13,17 +13,26 @@
 
 .description p {
   margin-top: 3rem;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin-bottom: 40px;
+}
+
+.rulesContainer {
+  margin-bottom: 20px;
 }
 
 .rulesList {
   padding: 0;
   list-style-type: decimal;
   text-align: left;
-  font-size: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.2em;
+  margin-bottom: 40px;
 }
 
 .rulesList li {
-  margin: rem 0;
+  margin: 0.5rem 0;
 }
 
 .buttons {

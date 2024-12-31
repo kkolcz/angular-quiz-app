@@ -14,6 +14,19 @@ h4 {
   margin-bottom: 20px;
 }
 
+.categoryButton {
+  padding: 1rem;
+  background-color: #282c34;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.categoryButton:hover {
+  background-color: #1f2329;
+  color: white;
+}
+
 .section_categories {
   margin-top: 50px;
   text-align: center;
@@ -31,7 +44,18 @@ h4 {
 
 .categoryNotification {
   height: 3rem;
-  margin-top: 20px;
+  margin-top: 40px;
+  text-align: center;
+}
+
+.categoryNotification > p {
+  letter-spacing: 1px;
+}
+
+.categoryNotification p:last-child {
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 2px;
 }
 
 .notification {
@@ -50,28 +74,40 @@ h4 {
 }
 
 .controlsButtons {
-  border: 1px solid black;
+  // border: 1px solid black;
   width: 230px;
 }
 
 input {
-  width: 150px;
+  width: 96%;
   height: 30px;
   border: none;
   outline: none;
+  border-radius: 6px;
+  padding: 5px;
 }
 
-button {
-  width: 75px;
-  height: 30px;
-  border: none;
-  background-color: #ecf0f1;
-  transition: all 0.3s;
+.buttonStart {
+  // margin-top: 25px;
+  // width: 75px;
+  // height: 30px;
+  // border: none;
+  // background-color: #ecf0f1;
+  // transition: all 0.3s;
+
+  margin: 20px;
+  cursor: pointer;
+  background-color: $secondary-color;
+  color: #282c34;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.2em;
 }
 
 button:hover {
-  background-color: #2c3e50;
-  color: white;
+  // background-color: #2c3e50;
+  // color: white;
 }
 
 @media screen and (max-width: 600px) {

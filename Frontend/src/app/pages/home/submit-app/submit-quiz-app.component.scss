@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 h2 {
   margin-bottom: 100px;
   text-align: center;
@@ -8,4 +10,16 @@ h2 {
   flex-direction: column;
   justify-content: space-around;
   height: 600px;
+}
+
+.submitButton {
+  margin: 20px;
+  cursor: pointer;
+  background-color: $secondary-color;
+  color: #282c34;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.2em;
+  text-align: center;
 }
