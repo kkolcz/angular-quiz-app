@@ -90,7 +90,8 @@ public class QuizController(DataContext context) : BaseApiController
                 Option2 = question.Option2,
                 Option3 = question.Option3,
                 Option4 = question.Option4,
-                QuizId = question.QuizId
+                QuizId = question.QuizId,
+                CorrectAnswer = question.Answer // Dodaj to pole
             }).ToList()
         })
         .FirstOrDefaultAsync(x => x.Id == id);

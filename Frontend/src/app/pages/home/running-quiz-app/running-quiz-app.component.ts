@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { QuizService } from '../../../services/quiz.service';
-import { Questions } from '../../../models/questions';
 import { Results } from '../../../models/results';
 import { ICategory } from '../home.component';
 

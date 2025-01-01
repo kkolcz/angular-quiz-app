@@ -11,4 +11,5 @@ public class QuestionDto
     public required string Option3 { get; set; }
     public required string Option4 { get; set; }
     public int? QuizId { get; set; }
+    public string CorrectAnswer { get; set; }
 }

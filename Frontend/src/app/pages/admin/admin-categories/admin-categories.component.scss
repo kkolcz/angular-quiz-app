@@ -14,13 +14,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white;
 }
 
 .icon {
   cursor: pointer;
   border: 1px solid black;
   margin: 2px;
-  color: black;
+  color: white;
 }
 
 .icon:hover {

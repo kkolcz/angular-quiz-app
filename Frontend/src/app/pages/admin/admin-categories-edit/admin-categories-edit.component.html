@@ -1,0 +1,82 @@
+<div class="container">
+  <h2 class="title">Edytuj Pytania w Quizie</h2>
+  <form [formGroup]="quizForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="questions">
+      <div
+        *ngFor="let question of questions.controls; let i = index"
+        [formGroupName]="i"
+        class="question-group"
+      >
+        <h3 class="question-title">Pytanie {{ i + 1 }}</h3>
+        <div class="form-group">
+          <label for="title">Tytuł Pytania</label>
+          <input
+            type="text"
+            id="title"
+            formControlName="title"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="option1">Opcja 1</label>
+          <input
+            type="text"
+            id="option1"
+            formControlName="option1"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="option2">Opcja 2</label>
+          <input
+            type="text"
+            id="option2"
+            formControlName="option2"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="option3">Opcja 3</label>
+          <input
+            type="text"
+            id="option3"
+            formControlName="option3"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="option4">Opcja 4</label>
+          <input
+            type="text"
+            id="option4"
+            formControlName="option4"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="correctAnswer">Prawidłowa Odpowiedź</label>
+
+          <select
+            id="correctAnswer"
+            formControlName="correctAnswer"
+            class="form-control"
+          >
+            <option [value]="question.value.option1">
+              {{ question.value.option1 }}
+            </option>
+            <option [value]="question.value.option2">
+              {{ question.value.option2 }}
+            </option>
+            <option [value]="question.value.option3">
+              {{ question.value.option3 }}
+            </option>
+            <option [value]="question.value.option4">
+              {{ question.value.option4 }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
+  </form>
+</div>

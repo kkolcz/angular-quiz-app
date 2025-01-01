@@ -132,4 +132,8 @@ export class QuizService {
       return res;
     });
   }
+
+  getQuizById(id: number) {
+    return this.http.get(`${this.API_URL}quiz/getQuiz/${id}`);
+  }
 }
