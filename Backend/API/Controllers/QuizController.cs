@@ -117,6 +117,6 @@ public class QuizController(DataContext context) : BaseApiController
         context.Quizzes.Remove(quiz);
         await context.SaveChangesAsync();
 
-        return Ok("Delete quiz successful");
+        return Ok(new { message = "Delete quiz successful" });
     }
 }

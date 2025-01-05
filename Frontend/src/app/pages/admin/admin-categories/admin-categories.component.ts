@@ -40,4 +40,16 @@ export class AdminCategoriesComponent implements OnInit {
   editQuestion(category: ICategory) {
     this.router.navigate(['admin/edit', category.id]);
   }
+
+  deleteCategory(category: ICategory) {
+    this.quizService.deleteCategories(category.id).subscribe({
+      next: (_) => {},
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => {
+        this.categories = this.categories.filter((c) => c.id !== category.id);
+      },
+    });
+  }
 }

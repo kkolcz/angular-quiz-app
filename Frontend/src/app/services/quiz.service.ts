@@ -119,11 +119,8 @@ export class QuizService {
       });
   }
 
-  deleteCategories(category: string) {
-    const a = `${this.API_URL}/questions/${category}.json`;
-    this.http.delete(a).subscribe((res) => {
-      return res;
-    });
+  deleteCategories(category: number) {
+    return this.http.delete(`${this.API_URL}quiz/deleteQuiz/${category}`);
   }
 
   deleteResult(uid: string) {
