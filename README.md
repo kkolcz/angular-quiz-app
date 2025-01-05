@@ -1,6 +1,6 @@
 # Angular Quiz
 
-<p align="center"><img src="https://github.com/kkolcz/angular-quiz-app/assets/76699027/5e79b47e-2424-475e-829b-fb7544ea730d" alt="Application preview"></p>
+<p align="center"><img src="https://github.com/user-attachments/assets/909a838b-ffd2-40df-b6bd-4fdb7eb9568b" alt="Application preview"></p>
 
 ## Live demo
 
