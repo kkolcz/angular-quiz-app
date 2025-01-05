@@ -12,8 +12,17 @@
   margin-top: -50px;
 }
 
-.btn {
-  margin: 5px;
+.button {
+  display: inline-block;
+  margin: 20px;
+
+  cursor: pointer;
+  background-color: #61dafb;
+  color: #282c34;
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.2em;
 }
 
 .router-outlet {
