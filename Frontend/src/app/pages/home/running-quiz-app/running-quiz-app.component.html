@@ -1,37 +1,57 @@
 <div class="container" *ngIf="!error && isLoading === false">
-    <h2>Quiz</h2>
-    <!-- <h2>{{category}}</h2> -->
-    <div class="questionContainer">
-        <p class="question">{{questionNumber}}. {{questionsList[questionNumber-1].title}}</p>
+  <h2>Quiz</h2>
+  <!-- <h2>{{category}}</h2> -->
+  <div class="questionContainer">
+    <p class="question">
+      {{ questionNumber }}. {{ questionsList[questionNumber - 1].title }}
+    </p>
+  </div>
+  <div class="answers">
+    <div
+      class="answer"
+      (click)="selectAnswer(questionsList[questionNumber - 1].option1)"
+    >
+      {{ questionsList[questionNumber - 1].option1 }}
     </div>
-    <div class="answers">
-        <div class="answer" (click)="selectAnswer(questionsList[questionNumber-1].option1)">
-            {{questionsList[questionNumber-1].option1}}</div>
-        <div class="answer" (click)="selectAnswer(questionsList[questionNumber-1].option2)">
-            {{questionsList[questionNumber-1].option2}}</div>
-        <div class="answer" (click)="selectAnswer(questionsList[questionNumber-1].option3)">
-            {{questionsList[questionNumber-1].option3}}</div>
-        <div class="answer" (click)="selectAnswer(questionsList[questionNumber-1].option4)">
-            {{questionsList[questionNumber-1].option4}}</div>
+    <div
+      class="answer"
+      (click)="selectAnswer(questionsList[questionNumber - 1].option2)"
+    >
+      {{ questionsList[questionNumber - 1].option2 }}
     </div>
-    <!-- <div class="controlls"> -->
-    <!-- <button class="btn btn-prev" (click)="prevQuestion()">Poprzednie</button> -->
-    <!-- <button class="btn btn-next" (click)="nextQuestion()">Dalej</button> -->
-    <!-- </div> -->
-    <div class="summary">
-        <p class="name">{{username}}</p>
-        <p class="questionNr">Pytanie {{questionNumber}} z {{questionsList.length}}</p>
-        <p class="points">Punkty: {{points}}</p>
-        <p class="timer">Czas: {{time}}</p>
+    <div
+      class="answer"
+      (click)="selectAnswer(questionsList[questionNumber - 1].option3)"
+    >
+      {{ questionsList[questionNumber - 1].option3 }}
     </div>
+    <div
+      class="answer"
+      (click)="selectAnswer(questionsList[questionNumber - 1].option4)"
+    >
+      {{ questionsList[questionNumber - 1].option4 }}
+    </div>
+  </div>
+  <!-- <div class="controlls"> -->
+  <!-- <button class="btn btn-prev" (click)="prevQuestion()">Poprzednie</button> -->
+  <!-- <button class="btn btn-next" (click)="nextQuestion()">Dalej</button> -->
+  <!-- </div> -->
+  <div class="summary">
+    <p class="name">{{ username }}</p>
+    <p class="questionNr">
+      Pytanie {{ questionNumber }} z {{ questionsList.length }}
+    </p>
+    <!-- <p class="points">Punkty: {{points}}</p> -->
+    <p class="timer">Czas: {{ time }}</p>
+  </div>
 </div>
 
 <div *ngIf="isLoading">
-    <app-loading />
+  <app-loading />
 </div>
 
 <div *ngIf="error">
-    <h2>Coś poszło nie tak, spróbuj ponownie.</h2>
+  <h2>Coś poszło nie tak, spróbuj ponownie.</h2>
 </div>
 
 <!-- <div *ngIf="results">
