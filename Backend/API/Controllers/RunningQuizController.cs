@@ -18,6 +18,7 @@ public class RunningQuizController(DataContext context) : BaseApiController
         {
             QuizId = id,
             UserId = startQuizDto.UserId,
+            Username = startQuizDto.Username,
             StartTime = DateTime.Now
         };
 
@@ -204,7 +205,8 @@ public class RunningQuizController(DataContext context) : BaseApiController
             RunningQuizId = quiz.Id,
             CorrectAnswers = correctAnswers,
             WrongAnswers = wrongAnswers,
-            TotalQuestions = quiz.Quiz.Questions.Count
+            TotalQuestions = quiz.Quiz.Questions.Count,
+            Username = quiz.Username,
         };
 
         return Ok(response);
@@ -214,6 +216,7 @@ public class RunningQuizController(DataContext context) : BaseApiController
 internal class ResultsDto
 {
     public string Message { get; internal set; }
+    public string Username { get; internal set; }
     public int QuizId { get; set; }
     public int RunningQuizId { get; set; }
     public int CorrectAnswers { get; set; }
@@ -231,6 +234,7 @@ internal class StartQuizResponseDto
 public class StartQuizDto
 {
     public required int UserId { get; set; }
+    public required string Username { get; set; }
 }
 
 public class StopQuizDto

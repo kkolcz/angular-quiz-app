@@ -7,6 +7,7 @@ public class RunningQuiz
     public int Id { get; set; }
     public int QuizId { get; set; }
     public int UserId { get; set; }
+    public string Username { get; set; }
     public DateTime StartTime { get; set; }
     public DateTime? EndTime { get; set; }
     public List<Answer> Answers { get; set; } = new List<Answer>();
