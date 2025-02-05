@@ -106,7 +106,8 @@ public class RunningQuizController(DataContext context) : BaseApiController
             RunningQuizId = quiz.Id,
             CorrectAnswers = correctAnswers,
             WrongAnswers = wrongAnswers,
-            TotalQuestions = quiz.Quiz.Questions.Count
+            TotalQuestions = quiz.Quiz.Questions.Count,
+            Username = quiz.Username,
         };
 
 
@@ -211,6 +212,64 @@ public class RunningQuizController(DataContext context) : BaseApiController
 
         return Ok(response);
     }
+
+
+
+[HttpGet("getAllResults")]
+public async Task<ActionResult> GetAllResults()
+{
+    var quizzes = await context.RunningQuiz
+        .Include(x => x.Answers)
+        .Include(x => x.Quiz)
+        .ThenInclude(q => q.Questions)
+        .Where(x => x.EndTime != null)
+        .ToListAsync();
+
+    if(!quizzes.Any())
+    {
+        return Ok(new List<ResultsDto>());
+    }
+
+    var results = new List<ResultsDto>();
+
+    foreach(var quiz in quizzes)
+    {
+        var correctAnswers = 0;
+        var wrongAnswers = 0;
+
+        foreach (var answer in quiz.Answers)
+        {
+            var question = quiz.Quiz?.Questions?.FirstOrDefault(x => x.Id == answer.QuestionId);
+            if (question != null && answer.Content != null && question.Answer == answer.Content)
+            {
+                correctAnswers++;
+            }
+            else
+            {
+                wrongAnswers++;
+            }
+        }
+
+        var solvingTime = quiz.EndTime.Value - quiz.StartTime;
+
+        results.Add(new ResultsDto
+        {
+            QuizId = quiz.QuizId,
+            RunningQuizId = quiz.Id,
+            CorrectAnswers = correctAnswers,
+            WrongAnswers = wrongAnswers,
+            TotalQuestions = quiz.Quiz?.Questions?.Count ?? 0,
+            Username = quiz.Username ?? "Anonymous",
+            Category = quiz.Quiz?.Category ?? "Unknown",
+            SolvingTime = solvingTime,
+            CompletionDate = quiz.EndTime.Value
+        });
+    }
+
+    return Ok(results);
+}
+
+
 }
 
 internal class ResultsDto
@@ -222,6 +281,9 @@ internal class ResultsDto
     public int CorrectAnswers { get; set; }
     public int WrongAnswers { get; set; }
     public int TotalQuestions { get; set; }
+    public string Category { get; set; }
+    public TimeSpan SolvingTime { get; set; }
+    public DateTime CompletionDate { get; set; }
 }
 
 internal class StartQuizResponseDto
