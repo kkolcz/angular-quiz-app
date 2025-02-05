@@ -37,22 +37,24 @@ export class QuizService {
   TEMP_USER_ID = '1';
   constructor(private http: HttpClient) {}
 
-  startQuiz(category: ICategory) {
+  startQuiz(category: ICategory, username: string) {
     const runningQuizId = String(category.id);
     console.log('Question loaded', category);
     this.runningQuiz.quizId = runningQuizId;
     const apiUrl = `${this.API_URL}RunningQuiz/startQuiz/${runningQuizId}`;
-    return this.http.post(apiUrl, { userId: this.TEMP_USER_ID }).pipe(
-      tap((res: any) => {
-        console.log(res);
-        this.runningQuiz = {
-          quizId: runningQuizId,
-          runningQuizId: res.runningQuizId,
-          title: res.quiz.title,
-          username: res.username,
-        };
-      })
-    );
+    return this.http
+      .post(apiUrl, { userId: this.TEMP_USER_ID, username: username })
+      .pipe(
+        tap((res: any) => {
+          console.log(res);
+          this.runningQuiz = {
+            quizId: runningQuizId,
+            runningQuizId: res.runningQuizId,
+            title: res.quiz.title,
+            username: res.username,
+          };
+        })
+      );
   }
 
   stopQuiz() {
@@ -91,6 +93,7 @@ export class QuizService {
 
   getResultsDb() {
     console.log('Get result');
+    console.log(this.runningQuiz.runningQuizId);
     return this.http.get(
       `${this.API_URL}RunningQuiz/getResults/${this.runningQuiz.runningQuizId}`
     );
@@ -104,6 +107,10 @@ export class QuizService {
       }
       return results;
     });
+  }
+
+  getAllResults() {
+    return this.http.get(`${this.API_URL}RunningQuiz/getAllResults`);
   }
 
   getCategories() {

@@ -1,34 +1,48 @@
 <span *ngIf="isLoading"><app-loading /></span>
 
 <div class="code" *ngIf="!isLoading">
-    <table class="pure-table table">
-        <thead>
-            <tr>
-                <th>Nazwa użytkownika</th>
-                <th>Kategoria</th>
-                <th>Czas</th>
-                <th>Data</th>
-                <th>Wynik</th>
-                <th>Buttons</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let res of results">
-                <th>{{res[1].username}}</th>
-                <th>{{res[1].category}}</th>
-                <th>{{res[1].solvedInSeconds}}s / {{res[1].totalQuizTime}}s</th>
-                <th>{{res[1].datetime}}</th>
-                <th>{{res[1].points}} / {{res[1].maxPoints}}</th>
-                <th><button (click)="deleteHandler(res[0])">X</button></th>
-            </tr>
-        </tbody>
-    </table>
+  <table class="pure-table table">
+    <thead>
+      <tr>
+        <th>Nazwa użytkownika</th>
+        <th>Kategoria</th>
+        <th>Czas</th>
+        <th>Data</th>
+        <th>Wynik</th>
+        <th>Buttons</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let reso of results">
+        <!-- <th>{{ reso.runningQuizId }}</th> -->
+        <th>{{ reso.username ? reso.username : "Nieznany" }}</th>
+        <th>{{ reso.category ? reso.category : "Brak kategorii" }}</th>
+        <th>
+          {{
+            reso.solvingTime ? (reso.solvingTime | timeFormat) : "Brak czasu"
+          }}
+        </th>
+        <th>
+          {{
+            reso.completionDate
+              ? (reso.completionDate | date : "HH:mm dd.MM.yyyy")
+              : "Brak daty"
+          }}
+        </th>
+        <!-- <th>{{ res.solvedInSeconds }}s / {{ res.totalQuizTime }}s</th> -->
+        <th>{{ reso.correctAnswers }} / {{ reso.totalQuestions }}</th>
+        <th>
+          <button (click)="deleteHandler(reso.id)" class="deleteButton">
+            X
+          </button>
+        </th>
+      </tr>
+    </tbody>
+  </table>
 
-
-    <!-- <code>
+  <!-- <code>
         <p>Username | Category | Points</p>
         <p *ngFor="let res of results">{{res.username}} | {{res.category}} | {{res.points}}</p>
     </code> -->
-
 </div>
 <!-- <button class="btn btn-back" routerLink='/admin'>Back</button> -->

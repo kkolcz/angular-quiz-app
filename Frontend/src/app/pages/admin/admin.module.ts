@@ -7,6 +7,7 @@ import { AdminResultsComponent } from './admin-results/admin-results.component';
 import { AdminComponent } from './admin.component';
 import { AdminCategoriesEditComponent } from './admin-categories-edit/admin-categories-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TimeFormatPipe } from 'src/app/pipes/time-format.pipe';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AdminCategoriesComponent,
     AdminResultsComponent,
     AdminCategoriesEditComponent,
+    TimeFormatPipe,
   ],
   imports: [CommonModule, AdminRoutingModule, ReactiveFormsModule],
   exports: [AdminComponent, AdminCategoriesComponent, AdminResultsComponent],

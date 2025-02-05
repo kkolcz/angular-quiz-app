@@ -79,7 +79,7 @@ export class RunningQuizAppComponent implements OnInit {
   loadQuestions() {
     this.isLoading = true;
     this.quizService
-      .startQuiz(this.category)
+      .startQuiz(this.category, this.username)
       .subscribe((res: IStartQuizRes) => {
         this.questionsList = res.quiz.questions;
         // this.time = this.questionsList[0].time;

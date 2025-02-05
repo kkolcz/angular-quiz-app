@@ -20,6 +20,16 @@
   overflow: auto;
   display: flex;
   justify-content: center;
+  color: #ffffff;
+}
+
+.deleteButton {
+  background-color: #e74c3c;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 .table {
