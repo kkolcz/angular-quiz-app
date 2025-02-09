@@ -1,0 +1,32 @@
+services:
+  myquiz_db:
+    image: mysql:8.0
+    container_name: myquiz_mysql_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: myapp
+      MYSQL_ROOT_PASSWORD: yourpassword
+    ports:
+      - '3306:3306'
+    volumes:
+      - myquiz_mysql_data:/var/lib/mysql
+    networks:
+      - myquiz_network
+
+  myquiz_backend:
+    image: myquiz_backend
+    container_name: myquiz_backend
+    restart: always
+    ports:
+      - '5000:8080'
+    depends_on:
+      - myquiz_db
+    networks:
+      - myquiz_network
+
+volumes:
+  myquiz_mysql_data:
+
+networks:
+  myquiz_network:
+    driver: bridge
